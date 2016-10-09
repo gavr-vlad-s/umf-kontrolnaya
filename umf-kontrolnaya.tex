@@ -1,0 +1,189 @@
+\documentclass[12pt]{article}
+
+%%
+%% Uncomment the line \usepackage{literat}
+%% if you are going to use
+%% Literaturnaya font instead of LH font
+%%
+%% \usepackage{literat}
+%%
+%% You may comment the line \usepackage{mathtext}
+%% if your text does not have russian letters
+%% in math formulae
+\usepackage{ccaption}
+\usepackage{verbatim}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{indentfirst}
+%%
+%% If your text is in english
+%% then you should substitute
+%% the option `russian' by `english'
+%%
+\usepackage{graphicx}
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\textheight 24.0cm
+\textwidth 16cm
+%\renewcommand{\baselinestretch}{1.347}
+\newcommand{\No}{${\cal N}{\!}\underline{\circ}$}
+\voffset -2cm
+\hoffset .0cm
+\oddsidemargin 0.5mm
+\evensidemargin 0.5mm
+\topmargin -0.4mm
+\righthyphenmin=2
+\hfuzz=12.7pt
+\makeatletter
+%\renewcommand\section{\@startsection {section}{1}{\z@}%
+%                                   {3.5ex \@plus 1ex \@minus .2ex}%
+%                                   {2.3ex \@plus.2ex}%
+%                                   {\normalfont\Large\bfseries}}
+\renewcommand{\thesection}{\arabic{section}}
+\@addtoreset{equation}{section}
+\@addtoreset{figure}{section}
+%\@addtoreset{table}{section}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+%\renewcommand{\thetable}{\thesection.\arabic{table}}
+\makeatother
+\newcommand{\dom}{\rm dom}
+\newcounter{rem}[section]
+\renewcommand{\therem}{\thesection\arabic{rem}}
+\newenvironment{Remark}{\par\refstepcounter{rem}
+	\bf Замечание \therem. \sl}{\rm\par}
+
+\renewcommand{\theenumi}{\arabic{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+\newcommand{\udc}[1]{УДК #1}
+
+\newcounter{lem}[section]
+\renewcommand{\thelem}{\thesection\arabic{lem}}
+\newenvironment{Lemma}{\par\refstepcounter{lem}\bf Лемма \thelem. \sl}{\rm\par}
+
+\newcounter{cor}[section]
+\renewcommand{\thecor}{\thesection\arabic{cor}}
+\newenvironment{Corrolary}{\par\refstepcounter{cor}\bf Следствие \thecor. \sl}{\rm\par}
+\newcounter{theor}[section]
+\renewcommand{\thetheor}{\thesection\arabic{theor}}
+\newenvironment{Theorem}{\par\refstepcounter{theor}\bf Теорема \thetheor. \sl}{\rm\par}
+%\let \kappa=\ae
+\newcommand{\diag}{\mathop{\rm diag}}
+\newcommand{\epi}{\mathop{\rm epi}}
+\newenvironment{Proof}{\par\noindent\bf Доказательство.\rm}{ \par}
+
+\newcounter{exam}[section]
+\renewcommand{\theexam}{\thesection\arabic{exam}}
+\newenvironment{Example}{\par\refstepcounter{exam}\bf Пример \theexam. \sl}{\rm\par}
+
+\newcounter{prob}[section]
+\renewcommand{\theprob}{\thesection\arabic{prob}}
+\newenvironment{Problem}{\par\refstepcounter{prob}\bf №\theprob. \sl}{\rm\par}
+
+\newcounter{sol}[section]
+\renewcommand{\thesol}{\thesection\arabic{sol}}
+\newenvironment{Solution}{\par\refstepcounter{sol}\bf Решение. \rm}{\rm\par}
+
+\newcounter{defin}[section]
+\renewcommand{\thedefin}{\thesection\arabic{defin}}
+\newenvironment{Definition}{\par\refstepcounter{defin}\bf Определение
+	\thedefin.\sl}{\rm\par}
+
+\newcounter{answ}[section]
+\renewcommand{\theansw}{\thesection\arabic{answ}}
+\newenvironment{Answer}{\par\refstepcounter{answ}\theansw. \rm}{\rm\par}
+
+\newcounter{exerc}[section]
+\renewcommand{\theexerc}{\thesection\arabic{exerc}}
+\newenvironment{Exercise}{\par\refstepcounter{exerc}\bf Упражнение
+	\theexerc.\it}{\rm\par}
+\newcommand{\ljoq}{<<}
+\newcommand{\rjoq}{>>}
+\newcommand{\vraisup}{\mathop{\rm vraisup}}
+\newcommand{\pr}{\mathop{\rm pr}}
+\newcommand{\sgn}{\mathop{\rm sgn}}
+
+
+\captiondelim{. }
+
+\setcounter{page}{3}
+
+
+\makeatletter
+\def\@seccntformat#1{\csname the#1\endcsname.\quad}
+\makeatother
+
+%\setcounter{section}{1}
+%\setcounter{section}{1}
+\begin{document}
+%
+%\vspace*{50ex}
+\large
+
+\vspace*{5cm}
+
+\renewcommand{\contentsname}{}
+
+\centerline{\textbf{Содержание}}
+
+\vspace*{1cm}
+
+\tableofcontents
+
+\newpage
+
+\addcontentsline{toc}{section}{Введение}
+\section*{Введение}
+
+\section{Вариант 1}
+
+\section{Вариант 2}
+
+\section{Вариант 3}
+
+\section{Вариант 4}
+
+\section{Вариант 5}
+
+\section{Вариант 6}
+
+\section{Вариант 7}
+
+\section{Вариант 8}
+
+\section{Вариант 9}
+
+\section{Вариант 10}
+
+\section{Вариант 11}
+
+\section{Вариант 12}
+
+\section{Вариант 13}
+
+\section{Вариант 14}
+
+\section{Вариант 15}
+
+\section{Вариант 16}
+
+\section{Вариант 17}
+
+\section{Вариант 18}
+
+\section{Вариант 19}
+
+\section{Вариант 20}
+
+\section{Вариант 21}
+
+\section{Вариант 22}
+
+\section{Вариант 23}
+
+\section{Вариант 24}
+
+\section{Вариант 25}
+\end{document}
