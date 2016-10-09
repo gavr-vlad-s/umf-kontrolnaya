@@ -1,0 +1,2378 @@
+\documentclass[12pt,draft]{article}
+
+   \usepackage[cp1251]{inputenc}
+%%
+%% Uncomment the line \usepackage{literat}
+%% if you are going to use
+%% Literaturnaya font instead of LH font
+%%
+%% \usepackage{literat}
+%%
+%% You may comment the line \usepackage{mathtext}
+%% if your text does not have russian letters
+%% in math formulae
+\usepackage{ccaption}
+   \usepackage{verbatim}
+   \usepackage{amsfonts}
+   \usepackage{amssymb}
+   \usepackage{amsmath}
+   \usepackage{mathtext}
+   \usepackage{indentfirst}
+%%
+%% If your text is in english
+%% then you should substitute
+%% the option `russian' by `english'
+%%
+   \usepackage[russian]{babel}
+   \usepackage{graphicx}
+
+\textheight 24.0cm
+\textwidth 16cm
+%\renewcommand{\baselinestretch}{1.347}
+\renewcommand{\No}{${\cal N}{\!}\underline{\circ}$}
+\voffset -2cm
+\hoffset .0cm
+\oddsidemargin 0.5mm
+\evensidemargin 0.5mm
+\topmargin -0.4mm
+\righthyphenmin=2
+\hfuzz=12.7pt
+\makeatletter
+%\renewcommand\section{\@startsection {section}{1}{\z@}%
+%                                   {3.5ex \@plus 1ex \@minus .2ex}%
+%                                   {2.3ex \@plus.2ex}%
+%                                   {\normalfont\Large\bfseries}}
+\renewcommand{\thesection}{\arabic{section}.}
+\@addtoreset{equation}{section}
+\@addtoreset{figure}{section}
+\renewcommand{\theequation}{\thesection\arabic{equation}}
+\renewcommand{\thefigure}{\thesection\arabic{figure}}
+
+\makeatother
+\newcommand{\dom}{\rm dom}
+\newcounter{rem}[section]
+\renewcommand{\therem}{\thesection\arabic{rem}}
+\newenvironment{Remark}{\par\refstepcounter{rem}
+\bf Замечание \therem. \sl}{\rm\par}
+
+\renewcommand{\theenumi}{\arabic{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+\newcommand{\udc}[1]{УДК #1}
+
+\newcounter{lem}[section]
+\renewcommand{\thelem}{\thesection\arabic{lem}}
+\newenvironment{Lemma}{\par\refstepcounter{lem}\bf Лемма \thelem. \sl}{\rm\par}
+
+\newcounter{cor}[section]
+\renewcommand{\thecor}{\thesection\arabic{cor}}
+\newenvironment{Corrolary}{\par\refstepcounter{cor}\bf Следствие \thecor. \sl}{\rm\par}
+\newcounter{theor}[section]
+\renewcommand{\thetheor}{\thesection\arabic{theor}}
+\newenvironment{Theorem}{\par\refstepcounter{theor}\bf Теорема \thetheor. \sl}{\rm\par}
+\let \kappa=\ae
+\newcommand{\diag}{\mathop{\rm diag}}
+\newcommand{\epi}{\mathop{\rm epi}}
+\newenvironment{Proof}{\par\noindent\bf Доказательство.\rm}{ \par}
+
+\newcounter{exam}[section]
+\renewcommand{\theexam}{\thesection\arabic{exam}}
+\newenvironment{Example}{\par\refstepcounter{exam}\bf Пример \theexam. \sl}{\rm\par}
+
+\newcounter{prob}[section]
+\renewcommand{\theprob}{\thesection\arabic{prob}}
+\newenvironment{Problem}{\par\refstepcounter{prob}\bf Задача \theprob. \sl}{\rm\par}
+
+\newcounter{sol}[section]
+\renewcommand{\thesol}{\thesection\arabic{sol}}
+\newenvironment{Solution}{\par\refstepcounter{sol}\bf Решение. \rm}{\rm\par}
+
+\newcounter{defin}[section]
+\renewcommand{\thedefin}{\thesection\arabic{defin}}
+ \newenvironment{Definition}{\par\refstepcounter{defin}\bf Определение
+\thedefin.\sl}{\rm\par}
+
+\newcounter{answ}[section]
+\renewcommand{\theansw}{\thesection\arabic{answ}}
+\newenvironment{Answer}{\par\refstepcounter{answ}\theansw. \rm}{\rm\par}
+
+\newcounter{exerc}[section]
+\renewcommand{\theexerc}{\thesection\arabic{exerc}}
+ \newenvironment{Exercise}{\par\refstepcounter{exerc}\bf Упражнение
+\theexerc.\it}{\rm\par}
+\newcommand{\ljoq}{<<}
+\newcommand{\rjoq}{>>}
+\newcommand{\vraisup}{\mathop{\rm vraisup}}
+\newcommand{\pr}{\mathop{\rm pr}}
+\newcommand{\sgn}{\mathop{\rm sgn}}
+
+\captiondelim{. }
+
+\setcounter{page}{3}
+%\setcounter{section}{1}
+\begin{document}
+%
+%\vspace*{50ex}
+\large
+\unitlength=5mm
+
+\vspace*{5cm}
+
+\renewcommand{\contentsname}{}
+
+\centerline{\textbf{Содержание}}
+
+\vspace*{1cm}
+
+\tableofcontents
+
+\newpage
+
+
+\addcontentsline{toc}{section}{Предисловие}
+\section*{Предисловие}
+Данное учебно--методическое пособие является продолжением части I, одноимённого пособия \cite{Fourier1},
+в котором рассматриваются задачи для функций с двумя независимыми переменными. Цель части II ---
+научить студентов решать избранные многомерные задачи методом разделения переменных. Из всего многообразия
+задач математической физики в пособии выделены три типа задач: начально--краевые (смешанные) задачи
+для уравнения колебания мембраны и уравнения теплопроводности, а также краевые задачи для уравнения
+Пуассона, возникающие при нахождении стационарной температуры в однородном теле. Эти задачи рассматриваются
+в случаях, когда пространственные переменные изменяются в областях, ограниченных окружностями или круговыми цилиндрами.
+На одном из этапов решения таких задач методом разделения переменных возникает задача Штурма--Лиувилля
+для уравнения Бесселя, что приводит к использованию цилиндрических функций. Основные сведения о цилиндрических
+функциях и решения задач Штурма--Лиувилля для уравнения Бесселя даны в \cite{BesselMet}. Поэтому в этом
+пособии приводятся лишь необходимые результаты решения, а именно, собственные числа и собственные функции
+соответствующих задач Штурма--Лиувилля, с указанием формул пособия \cite{BesselMet}. Все рассматриваемые
+в пособии многомерные задачи обладают осевой симметрией и сводятся к одномерным. При подборе задач
+использовались книги \cite{arsenin}--\cite{LebedevSkalskayaUflyand}.
+
+\section{Постановка смешанных и краевых задач}
+
+В пособии не приводится вывод уравнений и граничных условий. Соответствующий материал можно найти в
+\cite{arsenin}--\cite{Vladimirov}.
+
+\noindent
+$\bullet$\,\,\,\,\textbf{Задача о распространении тепла.}
+
+Уравнение, описывающее распространение тепла в изотропной однородной среде имеет вид
+\begin{equation}\label{HeatEquation}
+u_t-a^2\Delta u=\frac{f(x,t)}{c\rho},
+\end{equation}
+где $u(x,t)$ --- температура в точке $x\equiv(x_1,x_2,x_3)$ в момент времени $t$,
+$c$ --- коэффициент теплоёмкости материала, $\rho$ --- плотность материала, $f(x,t)$ --- плотность
+источников тепла, $a^2=\frac{k}{c\rho}$, $k$ --- коэффициент теплопроводности материала,
+$\Delta u\equiv u_{x_1x_1}+u_{x_2x_2}+u_{x_3x_3}$ --- трёхмерный оператор Лапласа.
+
+Для однозначного определения решения уравнения (\ref{HeatEquation}) в области $Q\subset R^3$ при $t>0$ необходимо задать начальную температуру
+в области $Q$,
+\begin{equation}\label{HeatEquation:initial}
+u|_{t=0}=u_0(x),\,\,\,x\in Q,
+\end{equation}
+и условие на границе области $Q$:
+\begin{gather}\label{HeatEquation:bc}
+\left.\left(\alpha\frac{\partial u}{\partial n}+\beta u\right)\right|_{\partial Q}=u_1(x,t),\,\,\,
+x\in\partial Q,\,\,\,t>0,
+\end{gather}
+где $\alpha$ и $\beta$ --- неотрицательные константы, одновременно не обращающиеся в нуль.
+
+Начально--краевая (смешанная) задача для уравнения (\ref{HeatEquation}), заключается в нахождении функции $u(x,t)$, определяемой в области $x\in\bar Q$, $t\geq0$, удовлетворяющей уравнению (\ref{HeatEquation}) в области $x\in Q$, $t>0$, начальному условию  (\ref{HeatEquation:initial}) и граничному условию
+(\ref{HeatEquation:bc}). Граница области $Q$, функции $f(x,t)$, $u_0(x)$, $u_1(x,t)$, постоянные $\alpha$, $\beta$, определяются физическими условиями  задачи, и называются входными данными задачи.
+
+Ниже перечислим частные случаи граничного условия (\ref{HeatEquation:bc}),
+сформулировав происходящий физический процесс:
+\begin{enumerate}
+    \item
+на границе области $Q$ поддерживается заданная температура:
+\begin{equation}\label{HeatEquation:boundary_temperature}
+u|_{\partial Q}=u_1(x,t),\,\,\,x\in\partial Q,\,\,\,t>0;
+\end{equation}
+    \item
+через границу области $Q$ подаётся тепловой поток плотности $q$:
+\begin{equation}\label{HeatEquation:teplovoj_potok}
+\left.k\frac{\partial u}{\partial n}\right|_{\partial Q}=q(x,t),\,\,\,x\in\partial Q,\,\,\,t>0;
+\end{equation}
+    \item
+граница области $Q$ теплоизолирована, т.е. тепловой поток через границу равен нулю:
+\begin{equation}\label{HeatEquation:teploizoljacia}
+\left.\frac{\partial u}{\partial n}\right|_{\partial Q}=0,\,\,\,t>0;
+\end{equation}
+    \item
+на границе $\partial Q$ происходит теплообмен по закону Ньютона со средой, имеющей температуру $u_1(x,t)$:
+\begin{equation}\label{Newton}
+\left.\frac{\partial u}{\partial n}\right|_{\partial Q}+H[u-u_1]|_{\partial Q}=0,\,\,\,t>0,
+\end{equation}
+где $H=\frac k\alpha$.
+\end{enumerate}
+
+
+
+\noindent
+$\bullet$\,\,\,\,\textbf{Задача о колебаниях мембраны.}
+
+Пусть в положении равновесия мембрана занимает область $Q$ плоскости $(x_1,x_2)$. Уравнение, описывающее поперечные колебания однородной мембраны имеет вид
+\begin{equation}\label{WaveEquation}
+u_{tt}-a^2\Delta u=\frac{f(x,t)}{\rho},
+\end{equation}
+где $u(x,t)$ --- отклонение мембраны от положения равновесия в точке $x\equiv(x_1,x_2)$ в момент времени $t$,
+$\rho$ --- плотность материала мембраны, $f(x,t)$ --- плотность внешней силы, распределённой по площади
+мембраны, $\Delta u\equiv u_{x_1x_1}+u_{x_2x_2}$ --- двумерный оператор Лапласа, $a^2=\frac{T}\rho$.
+
+
+Для однозначного описания процесса колебаний мембраны нужно задать  начальное отклонение и начальную скорость точек мембраны,
+\begin{equation}\label{WaveEquation:initial}
+u|_{t=0}=u_0(x),\,\,\,u_t|_{t=0}=u_1(x),\,\,\,x\in Q,
+\end{equation}
+а также условие на границе мембраны (граничное условие):
+\begin{gather}\label{WaveEquation:bc}
+\left.\left(\alpha\frac{\partial u}{\partial n}+\beta u\right)\right|_{\partial Q}=u_2(x,t),\,\,\,
+x\in \partial Q,\,\,\,t>0,
+\end{gather}
+где $\alpha$ и $\beta$ --- неотрицательные постоянные, одновременно не обращающиеся в нуль.
+
+Сформулируем начально--краевую задачу: найти функцию, определённую в области
+$x\in\bar Q$, $t\geq0$, удовлетворяющую уравнению (\ref{WaveEquation})
+в области $x\in Q$, $t>0$, начальным условиям  (\ref{WaveEquation:initial})
+и граничному условию (\ref{WaveEquation:bc}).
+
+Входными данными задачи о колебаниях мембраны являются область $Q\subset R^2$,
+функции $f(x,t)$, $u_0(x)$, $u_1(x)$, $u_2(x)$ и постоянные $\alpha$, $\beta$.
+
+Постоянные  $\alpha$ и $\beta$ определяются физическими условиями задачи. Приведём возможные варианты таких условий:
+\begin{enumerate}
+    \item
+край мембраны жёстко закреплён, т.е. смещения точек края мембраны равны нулю:
+\begin{equation}\label{WaveEquation:fixed}
+u|_{x\in\partial Q}=0,\,\,\,x\in\partial Q,\,\,\,t>0;
+\end{equation}
+    \item
+к краю мембраны приложена сила с плотностью $f_1(x,t)$:
+\begin{equation}\label{WaveEquation:force}
+\left.\frac{\partial u}{\partial n}\right|_{\partial Q}=\frac{f_1(x,t)}T
+,\,\,\,x\in\partial Q,\,\,\,t>0;
+\end{equation}
+    \item
+край мембраны свободен, т.е. может свободно перемещаться по вертикальной боковой поверхности цилиндра с основанием $\partial Q$:
+\begin{equation}\label{WaveEquation:free}
+\left.\frac{\partial u}{\partial n}\right|_{\partial Q}=0,\,\,\,t>0;
+\end{equation}
+    \item
+край мембраны упруго закреплён:
+\begin{equation}\label{WaveEquation:uprugo}
+\left.\left[\frac{\partial u}{\partial n}+Hu\right]\right|_{\partial Q}=0,\,\,\,x\in\partial Q,\,\,\,t>0,
+\end{equation}
+где $H=\frac kT$.
+\end{enumerate}
+
+Если колебания мембраны происходят в среде, оказывающей сопротивление,
+пропорциональное скорости, то уравнение колебаний мембраны имеет вид
+\begin{equation}
+u_{tt}+2\nu u_t-a^2\Delta u=\frac{f(x,t)}\rho,\,\,\,x\in Q,\,\,\,t>0.
+\end{equation}
+
+\noindent
+$\bullet$\,\,\,\,\textbf{Задача нахождения стационарной температуры.}
+
+Стационарной называется температура, которая не зависит от времени,
+а является функцией лишь пространственных переменных. Вследствие этого уравнение   (\ref{HeatEquation}) принимает
+вид уравнения Пуассона
+\begin{equation}\label{HeatEquation:st}
+\Delta u=-\frac{f(x)}{c\rho a^2}.
+\end{equation}
+
+
+Для уравнения (\ref{HeatEquation:st}) ставится краевая задача: найти решение уравнения (\ref{HeatEquation:st}) в области $Q$, удовлетворяющее на границе области $Q$ условию
+\begin{equation}
+\left.\left[\alpha(x)\frac{\partial u}{\partial n}+\beta(x)u\right]\right|_{\partial Q}=u_1(x),\,\,\,x\in\partial Q,
+\end{equation}
+где $\alpha(x)$ и $\beta(x)$ --- неотрицательные функции, одновременно не обращаю\-щиеся в ноль.
+
+Примеры граничных условий в задаче нахождения стационарной температуры те же, что и в нестационарном случае
+((\ref{HeatEquation:boundary_temperature})--(\ref{Newton})), но правые части граничных условий не зависят от $t$.
+\section{Метод разделения переменных для задач с однородными уравнениями и с однородными граничными условиями}
+\begin{Problem}\label{p21}
+Круглая закреплённая по краю мембрана радиуса $r_0$ с центром в начале координат находится
+в среде, сопротивление которой пропорционально скорости. Коэффициент
+пропорциональности $2\nu<\frac{2a\mu_1}{r_0}$, где $\mu_1$ --- первый положительный
+ноль функции Бесселя $J_0(\mu)$. Изучить свободные колебания мембраны, если
+известно, что при $t=0$ её форма имеет радиальный характер (является функцией
+расстояния от центра), а начальная скорость равна нулю.
+\end{Problem}
+\begin{Solution}В задаче ничего не сказано о внешней силе, распределённой по
+поверхности мембраны. По условию задачи колебания мембраны вызваны только
+начальным отклонением от положения равновесия. Поэтому запишем однородное волновое
+уравнение в среде с сопротивлением
+\begin{equation}\label{volnur2Dssopr}
+u_{tt}+2\nu u_t-a^2(u_{xx}+u_{yy})=0.
+\end{equation}
+В начальный момент времени известна форма мембраны
+\begin{equation}\label{nachformamembr}
+u|_{t=0}=u_0(r),\mbox{ где $r=\sqrt{x^2+y^2}$},
+\end{equation}
+и начальная скорость
+\begin{equation}\label{nacscormembr}
+u_t|_{t=0}=0.
+\end{equation}
+
+Кроме начальных условий следует задать граничное условие. Так как край мембраны
+жёстко закреплён, отклонений точек мембраны на границе не происходит и граничное
+условие имеет вид
+\begin{equation}\label{gruslmembr}
+u|_{x^2+y^2=r_0^2}=0.
+\end{equation}
+
+Сформулируем начально--краевую задачу. Найти функцию $u(x,y,t)$, определённую в области
+$x^2+y^2\leq r_0^2$, $t\geq0$, удовлетворяющую уравнению (\ref{volnur2Dssopr})
+в области $x^2+y^2< r_0^2$, $t>0$, начальным условиям (\ref{nachformamembr}), (\ref{nacscormembr}) и граничному условию
+(\ref{gruslmembr}).
+
+При решении задач методом Фурье переменные должны разделяться как в однородном уравнении,
+так и в однородных граничных условиях. В данной задаче переменные не разделяются в
+граничном условии (\ref{gruslmembr}). В этих случаях, как правило, используют другие
+независимые переменные, отражающие симметрию задачи. Граница области, в
+которой решается задача (окружность), является координатной линией полярной системы координат.
+Поэтому сделаем замену переменных
+$$
+\begin{cases}
+x=r\cos\varphi,\\
+y=r\sin\varphi.
+\end{cases}
+$$
+В результате получим начально--краевую задачу
+\begin{gather}\label{volnur2Dssoprpolsyst}
+u_{tt}+2\nu u_t-a^2\left[
+\frac1r
+\frac\partial{\partial r}
+\left(r\frac{\partial u}{\partial r}\right)+
+\frac1{r^2}\frac{\partial^2u}{\partial\varphi^2}\right]=0,\\
+\notag
+u|_{t=0}=u_0(r),\,\,\,%
+\notag
+u_t|_{t=0}=0,\\
+\notag
+u|_{r=r_0}=0.
+\end{gather}
+
+Входные данные в (\ref{volnur2Dssoprpolsyst}) (правые части уравнения,
+начальных и граничных условий) не зависят от $\varphi$. Поэтому решение
+задачи также не зависит от $\varphi$,
+\begin{gather*}
+u=u(r,t),\,\,\,\frac{\partial u}{\partial\varphi}=0,
+\end{gather*}
+что приводит к упрощению уравнения:
+\begin{gather}\label{volnur2Dssoprpolsyst:upr}
+u_{tt}+2\nu u_t-
+\frac{a^2}r
+\frac\partial{\partial r}
+\left(r\frac{\partial u}{\partial r}\right)=0,\,\,\,
+0<r<r_0,\,\,\,t>0,\\
+\label{volnur2Dssoprpolsyst:upr:otkl}
+u|_{t=0}=u_0(r),\,\,\,0\leq r\leq r_0,\\
+\label{volnur2Dssoprpolsyst:upr:scor}
+u_t|_{t=0}=0,\,\,\,0\leq r\leq r_0,\\
+\label{volnur2Dssoprpolsyst:upr:grusl}
+u|_{r=r_0}=0,\,\,\,t\geq0.
+\end{gather}
+
+Так как точка $r=0$ является особой точкой уравнения (\ref{volnur2Dssoprpolsyst:upr}),
+следует потребовать ограниченности решения в этой точке в любой момент времени
+\begin{gather}\label{volnur2Dssoprpolsyst:upr:grusl_ogr}
+|u|_{r=0}|<\infty,\,\,\,t\geq0.
+\end{gather}
+
+Для решения задачи (\ref{volnur2Dssoprpolsyst:upr})--(\ref{volnur2Dssoprpolsyst:upr:grusl_ogr})
+сначала рассмотрим вспомогательную задачу об отыскании частных решений уравнения (\ref{volnur2Dssoprpolsyst:upr}),
+удовлетворяющих граничным условиям (\ref{volnur2Dssoprpolsyst:upr:grusl}), (\ref{volnur2Dssoprpolsyst:upr:grusl_ogr}),
+отличных от нуля и имеющих специальный вид
+\begin{gather}\label{spsolution}
+u(r,t)=R(r)T(t).
+\end{gather}
+Здесь $R(r)$ --- функция, зависящая только от переменной $r$, а $T(t)$ ---
+функция, зависящая только от переменной $t$. Подставим (\ref{spsolution}) в
+уравнение (\ref{volnur2Dssoprpolsyst:upr}):
+\begin{gather*}
+T''(t)R(r)+2\nu T'(t)R(r)=\frac{a^2}rT(t)\frac{d}{dr}\left(r\frac{dR(r)}{dr}\right).
+\end{gather*}
+Поделив на $a^2T(t)R(r)$, получим равенство
+\begin{gather}\label{TeqR}
+\frac{T''(t)+2\nu T'(t)}{a^2T(t)}=\frac1{rR(r)}\frac{d}{dr}\left(r\frac{dR(r)}{dr}\right),
+\end{gather}
+которое должно выполняться при всех $0<r<r_0$, $t>0$. Особенностью равенства (\ref{TeqR})
+является то, что его левая часть не зависит от $r$, а правая не зависит от $t$.
+Такое возможно лишь в случае, когда выражения левой и правой частей не зависят
+от $r$ и $t$ и равны одной и той же постоянной. Обозначим эту постоянную $-\lambda$:
+\begin{gather*}
+\frac{T''(t)+2\nu T'(t)}{a^2T(t)}=\frac1{rR(r)}\frac{d}{dr}\left(r\frac{dR(r)}{dr}\right)=-\lambda.
+\end{gather*}
+Отсюда выводим
+\begin{gather}
+\label{Tequation}
+T''(t)+2\nu T'(t)+a^2\lambda T(t)=0,\\
+\label{Requation}
+\frac{d}{dr}\left(r\frac{dR(r)}{dr}\right)+\lambda rR(r)=0.
+\end{gather}
+
+Таким образом, уравнение  (\ref{volnur2Dssoprpolsyst:upr}) распалось
+на два обыкновенных дифференциальных уравнения, или, как говорят,
+в уравнении  (\ref{volnur2Dssoprpolsyst:upr}) разделились переменные.
+
+Подставляя произведение  (\ref{spsolution}) в однородные граничные условия
+ (\ref{volnur2Dssoprpolsyst:upr:grusl}) и (\ref{volnur2Dssoprpolsyst:upr:grusl_ogr}),
+будем иметь
+\begin{gather}\label{bcR}
+|R(0)|<\infty,\,\,\,R(r_0)=0.
+\end{gather}
+Задача (\ref{Requation}), (\ref{bcR}) является примером задачи Штурма--Лиувилля. Те значения параметра
+$\lambda$, при которых задача имеет нетривиальные решения, называются собственными значениями, а
+соответствующие им нетривиальные решения --- собственными функциями. Решить задачу Штурма--Лиувилля ---
+значит найти все собственные значения и собственные функции. В данном пособии решение задач
+Штурма--Лиувилля не приводится, а указывается, где его можно найти.
+Выпишем собственные функции, их нормы и собственные числа задачи Штурма--Лиувилля
+(\ref{Requation}), (\ref{bcR})(\cite[стр.31--33]{BesselMet}):
+\begin{gather}\label{SchturmLiouvilleR:solution}
+R_n(r)=J_0\left(\frac{\mu_nr}{r_0}\right),\,\,\,
+\|R_n\|^2=\frac{r_0^2}2J_1^2(\mu_n),\\
+\notag
+\lambda_n=
+\left(\frac{\mu_n}{r_0}\right)^2,\,\,\,n=1,2,\dots;
+\end{gather}
+где $0<\mu_1<\mu_2<\dots<\mu_n<\dots$ --- положительные нули функции $J_0(\mu)$.
+
+Подставим собственные значения $\lambda_n$ в уравнение (\ref{Tequation}),
+а решения, соответствующие этим $\lambda_n$, обозначим $T_n(t)$:
+\begin{gather}\label{Tnequation}
+T''_n(t)+2\nu T'_n(t)+\left(\frac{a\mu_n}{r_0}\right)^2T_n(t)=0,\,\,\,n=1,2,\dots
+\end{gather}
+Уравнения (\ref{Tnequation}) являются линейными однородными с постоянными коэффициентами,
+соответствующие им характеристические уравнения имеют вид
+\begin{gather*}
+p^2_n+2\nu p_n+\left(\frac{a\mu_n}{r_0}\right)^2=0,\,\,\,n=1,2,\dots
+\end{gather*}
+Поскольку корни характеристического уравнения --- комплексно--соп\-ря\-жён\-ные числа
+$p_n=-\nu\pm i\omega_n$, где $\omega_n=\sqrt{\left(\frac{a\mu_n}{r_0}\right)^2-\nu^2}$,
+то общее решение дифференциального уравнения (\ref{Tnequation})
+имеет вид
+\begin{gather*}
+T_n(t)=e^{-\nu t}[C_n\cos(\omega_nt)+D_n\sin(\omega_nt)].
+\end{gather*}
+Согласно формуле  (\ref{spsolution}) запишем частные решения уравнения
+(\ref{volnur2Dssoprpolsyst:upr})
+\begin{gather*}
+u_n(r,t)=T_n(t)R_n(r)=
+e^{-\nu t}[C_n\cos(\omega_nt)+D_n\sin(\omega_nt)]J_0\left(\frac{\mu_nr}{r_0}\right)\!,\\
+\,\,\,n=1,2,\dots
+\end{gather*}
+В соответствии с принципом дискретной суперпозиции ряд, составленный из решений
+уравнения (\ref{volnur2Dssoprpolsyst:upr}),
+\begin{gather}\label{u:series}
+u(r,t)=\sum\limits_{n=1}^\infty u_n(r,t)=\\
+=\notag
+\sum\limits_{n=1}^\infty
+e^{-\nu t}[C_n\cos(\omega_nt)+D_n\sin(\omega_nt)]J_0\left(\frac{\mu_nr}{r_0}\right)
+\end{gather}
+также удовлетворяет (\ref{volnur2Dssoprpolsyst:upr}) при условии его равномерной сходимости и возможности
+почленного дифференцирования по $r$ и $t$ до второго порядка включительно. Поскольку каждое слагаемое ряда
+ (\ref{u:series}) удовлетворяет граничным условиям (\ref{volnur2Dssoprpolsyst:upr:grusl}) и
+ (\ref{volnur2Dssoprpolsyst:upr:grusl_ogr}), то им же будет удовлетворять и сумма ряда, если ряд сходится
+ равномерно по $r$ и $t$  в области $0\leq r\leq r_0$, $t\geq0$.
+
+Подберём коэффициенты $C_n$ и $D_n$ так, чтобы функция, представляемая формальным
+рядом, удовлетворяла начальным условиям (\ref{volnur2Dssoprpolsyst:upr:otkl}),
+(\ref{volnur2Dssoprpolsyst:upr:scor}). Продифференцируем ряд (\ref{u:series}) по $t$:
+\begin{gather}\label{ut:series}
+u_t(r,t)=\sum\limits_{n=1}^\infty\{-\nu e^{-\nu t}[C_n\cos(\omega_nt)+D_n\sin(\omega_nt)]+\\
+\notag+e^{-\nu t}\omega_n[-C_n\sin(\omega_nt)+D_n\cos(\omega_nt)]\}J_0\left(\frac{\mu_nr}{r_0}\right)
+\end{gather}
+Подставляя (\ref{u:series}),  (\ref{ut:series}) в начальные условия
+(\ref{volnur2Dssoprpolsyst:upr:otkl}),
+(\ref{volnur2Dssoprpolsyst:upr:scor}), получим равенства
+\begin{gather*}
+\sum\limits_{n=1}^\infty
+C_nJ_0\left(\frac{\mu_nr}{r_0}\right)=u_0(r),\\
+\sum\limits_{n=1}^\infty
+[-\nu C_n+\omega_nD_n]J_0\left(\frac{\mu_nr}{r_0}\right)=0,
+\end{gather*}
+которые представляют собой разложение заданных функций $u_0(r)$ и $0$
+в виде рядов по собственным функциям $J_0\!\left(\frac{\mu_nr}{r_0}\right)$, $k=1,2,\dots$.
+В соответствии с теоремой Стеклова \cite[стр.7]{Fourier1}, заключаем, что
+\begin{gather}\label{TnCauchyProblem}
+C_n=\frac2{r_0^2J_1^2(\mu_n)}
+\int\limits_0^{r_0}\xi u_0(\xi)J_0\left(\frac{\mu_n\xi}{r_0}\right)d\xi\equiv\alpha_n,\\
+\notag
+-\nu C_n+\omega_nD_n=0.
+\end{gather}
+Определив из системы (\ref{TnCauchyProblem}) коэффициенты $C_n$, $D_n$ и подставив их в ряд
+ (\ref{u:series}), найдём решение задачи:
+\begin{gather*}
+u(r,t)=e^{-\nu t}\sum\limits_{n=1}^\infty
+\alpha_n\left[\cos(\omega_nt)+\frac{\nu\sin(\omega_nt)}{\omega_n}\right]
+J_0\left(\frac{\mu_nr}{r_0}\right).
+\end{gather*}
+\end{Solution}
+
+\begin{Problem}
+Найти закон выравнивания заданного осесимметричного начального распределения
+температуры $u(r,0)=r^2$ в бесконечном цилиндре радиуса $r_0$, боковая поверхность
+которого теплоизолирована.
+\end{Problem}
+\begin{Solution}
+Запишем однородное уравнение теплопроводности, так как внутри
+бесконечного цилиндра нет источников тепла:
+\begin{gather}\label{heat:equation}
+u_t-a^2(u_{xx}+u_{yy}+u_{zz})=0.
+\end{gather}
+Известно начальное распределение температуры
+\begin{gather}\label{heat:initial}
+u|_{t=0}=r^2,\mbox{ где $r=\sqrt{x^2+y^2}$.}
+\end{gather}
+
+Кроме того, по условию задачи боковая поверхность цилиндра теплоизолирована.  Это означает, что
+тепловой поток через боковую поверхность равен нулю, то есть
+\begin{gather}\label{heat:boundary}
+\left.k\frac{\partial u}{\partial n}\right|_{r=r_0}=0,
+\end{gather}
+где $n$ --- единичный вектор внешней нормали к боковой поверхности цилиндра.
+
+Сформулируем начально--краевую задачу. Найти функцию $u(x,y,z,t)$,
+определённую в области $x^2+y^2\leq r_0^2$, $-\infty<z<\infty$, $t\geq0$,
+удовлетворяющую уравнению (\ref{heat:equation}) в области
+ $x^2+y^2<r_0^2$, $-\infty<z<\infty$, $t>0$, начальному условию
+ (\ref{heat:initial}) и граничному условию (\ref{heat:boundary}).
+
+Граница области, в которой решается задача,
+является координатной поверхностью цилиндрической системы координат.
+Поэтому используем цилиндрические координаты:
+\begin{gather*}
+  \begin{cases}
+    x=r\cos\varphi, \\
+    y=r\sin\varphi, \\
+    z=z.
+  \end{cases}
+\end{gather*}
+В результате замены переменных задача преобразуется к виду
+\begin{gather}\label{heat:cylindric_coords}
+u_t-a^2\left[\frac1r\frac\partial{\partial r}
+\left(r\frac{\partial u}{\partial r}\right)+
+\frac1{r^2}\frac{\partial^2u}{\partial \varphi^2}+\frac{\partial^2u}{\partial z^2}\right]=0,\\
+\notag
+u|_{t=0}=r^2,\\
+\notag
+\left.\frac{\partial u}{\partial r}\right|_{r=r_0}=0.
+\end{gather}
+Здесь учтено, что нормаль к поверхности цилиндра направлена по радиу\-су.
+
+В задаче (\ref{heat:cylindric_coords}) входные данные (правые части уравнения,
+начального и граничного условий) не зависят от $\varphi$, $z$. Поэтому
+\begin{gather*}
+u=u(r,t),\,\,\,\frac{\partial u}{\partial \varphi}=0,\,\,\,
+\frac{\partial u}{\partial z}=0,
+\end{gather*}
+и задача (\ref{heat:cylindric_coords}) упрощается:
+\begin{gather}
+\label{heat:simplified:cylindric_coords:equation}
+u_t-\frac{a^2}r\frac\partial{\partial r}
+\left(r\frac{\partial u}{\partial r}\right)=0,\,\,\,
+0<r<r_0,\,\,\,t>0,\\
+\label{heat:simplified:cylindric_coords:initial}
+u|_{t=0}=r^2,\,\,\,0\leq r \leq r_0,\\
+\label{heat:simplified:cylindric_coords:boundary}
+u_r|_{r=r_0}=0,\,\,\,t\geq0.
+\end{gather}
+
+Точка $r=0$ является особой точкой
+уравнения (\ref{heat:simplified:cylindric_coords:equation}). Поэтому добавим условие
+ограниченности решения в этой точке в любой момент времени
+\begin{gather}\label{heat:simplified:cylindric_coords:boundness}
+|u|_{r=0}|<\infty,\,\,\,t\geq0.
+\end{gather}
+
+Чтобы решить начально--краевую задачу\label{razdel:perem:1}
+(\ref{heat:simplified:cylindric_coords:equation})--(\ref{heat:simplified:cylindric_coords:boundness}),
+сначала разделим переменные в уравнении (\ref{heat:simplified:cylindric_coords:equation})
+и граничных условиях (\ref{heat:simplified:cylindric_coords:boundary}),
+(\ref{heat:simplified:cylindric_coords:boundness}). С этой целью подставим произведение
+\begin{gather}\label{heat:special_solution}
+u(r,t)=R(r)T(t)
+\end{gather}
+в уравнение (\ref{heat:simplified:cylindric_coords:equation}):
+\begin{gather*}
+T'(t)R(r)=\frac{a^2}rT(t)\frac{d}{dr}
+\left(r\frac{dR(r)}{dr}\right).
+\end{gather*}
+Поделив на $a^2T(t)R(r)$, получим равенство
+\begin{gather}\label{TRequation}
+\frac{T'(t)}{a^2T(t)}=\frac1{rR(r)}\frac{d}{dr}\left(r\frac{dR(r)}{dr}\right),
+\end{gather}
+которое должно выполняться при всех $0<r<r_0$, $t>0$.
+
+Из равенства (\ref{TRequation}) следует, что при фиксированном $t$ правая часть при
+всех $0<r<r_0$ сохраняет постоянное значение и при фиксированном
+$r$  левая часть при всех $t$ также сохраняет постоянное значение.
+Таким образом,
+\begin{gather*}
+\frac{T'(t)}{a^2T(t)}=\frac1{rR(r)}\frac{d}{dr}\left(r\frac{dR(r)}{dr}\right)=-\lambda.
+\end{gather*}
+Отсюда выводим
+\begin{gather}
+\label{heat:Tequation}
+T'(t)+a^2\lambda T(t)=0,\\
+\label{heat:Requation}
+\frac{d}{dr}\left(r\frac{dR(r)}{dr}\right)+\lambda rR(r)=0.
+\end{gather}
+
+
+Разделяя переменные в однородных граничных условиях
+ (\ref{heat:simplified:cylindric_coords:boundary}) и (\ref{heat:simplified:cylindric_coords:boundness}),
+будем иметь
+\begin{gather}\label{bcRd}
+|R(0)|<\infty,\,\,\,R'(r_0)=0.
+\end{gather}
+Выпишем собственные числа и собственные функции задачи Штурма--Лиувилля
+(\ref{heat:Requation}), (\ref{bcRd})(\cite[стр.33--34]{BesselMet}).
+Для этой задачи $\lambda_0=0$ является собственным значением, а
+$R_0(r)=1$ --- соответствующей собственной функцией, причём $\|R_0\|^2=\frac{r_0^2}2$.
+Положительные собственные значения определяются положительными нулями функции Бесселя с индексом 1,
+\begin{gather}\label{SLder:lambda}
+\lambda_n=
+\left(\frac{\mu_n}{r_0}\right)^2,\,\,\,J_1(\mu_n)=0,\,\,\,
+n=1,2,\dots,\\
+\notag
+0<\mu_1<\mu_2<\dots<\mu_n<\dots
+\end{gather}
+Соответствующие собственные функции и их нормы имеют вид
+\begin{gather}\label{SLder:R}%\label{SchturmLiouvilleR2:solution}
+R_n(r)=J_0\left(\frac{\mu_nr}{r_0}\right),\\
+\notag
+\|R_n\|^2=\frac{r_0^2}2J_0^2(\mu_n),\,\,\,
+n=1,2,\dots
+\end{gather}
+Подставим собственные значения $\lambda_n$ в уравнение (\ref{heat:Tequation}),
+а решения, соответствующие этим $\lambda_n$, обозначим $T_n(t)$:
+\begin{gather*}
+T_0'(t)=0,\,\,\,T_n'(t)+
+\left(\frac{a\mu_n}{r_0}\right)^2T_n(t)=0,\,\,\,n=1,2,\dots
+\end{gather*}
+Общие решения этих уравнений имеют вид
+\begin{gather*}
+T_0(t)=A_0,\,\,\,T_n(t)=A_ne^{-\left(\frac{a\mu_n}{r_0}\right)^2t},
+\,\,\,n=1,2,\dots
+\end{gather*}
+Согласно формуле  (\ref{heat:special_solution}) запишем частные решения уравнения
+  (\ref{heat:simplified:cylindric_coords:equation}):
+\begin{gather*}
+u_0(r,t)=T_0(t)R_0(r)=A_0,\\
+u_n(r,t)=T_n(t)R_n(r)=A_ne^{-\left(\frac{a\mu_n}{r_0}\right)^2t}
+J_0\left(\frac{\mu_nr}{r_0}\right),
+\,\,\,n=1,2,\dots
+\end{gather*}
+Будем искать решение задачи
+(\ref{heat:simplified:cylindric_coords:equation})--(\ref{heat:simplified:cylindric_coords:boundness})
+в виде ряда
+\begin{gather}\label{heat:u:series}
+u(r,t)=\sum\limits_{n=0}^\infty u_n(r,t)=A_0+\sum\limits_{n=1}^\infty
+A_ne^{-\left(\frac{a\mu_n}{r_0}\right)^2t}J_0\left(\frac{\mu_nr}{r_0}\right).
+\end{gather}
+Функция (\ref{heat:u:series}) удовлетворяет уравнению (\ref{heat:simplified:cylindric_coords:equation})
+при условии равномерной сходимости ряда и возможности почленного дифференцирования
+по $r$ и $t$ до второго порядка включительно. Поскольку каждое слагаемое ряда
+ (\ref{heat:u:series}) удовлетворяет граничным условиям
+ (\ref{heat:simplified:cylindric_coords:boundary}) и (\ref{heat:simplified:cylindric_coords:boundness}),
+то им же будет удовлетворять и сумма ряда.
+
+Чтобы определить коэффициенты $A_n$, воспользуемся начальным условием
+(\ref{heat:simplified:cylindric_coords:initial}).
+Подставляя ряд (\ref{heat:u:series}) в начальное условие
+(\ref{heat:simplified:cylindric_coords:initial}), получим равенство
+\begin{gather*}
+A_0+\sum\limits_{n=1}^\infty A_nJ_0\left(\frac{\mu_nr}{r_0}\right)=r^2.
+\end{gather*}
+Применяя теорему Стеклова \cite[стр.7]{Fourier1}, заключаем, что
+\begin{gather*}
+A_0=\frac2{r_0^2}\int_0^{r_0}r^3dr=\frac{r_0^2}2,
+\end{gather*}
+\begin{gather*}
+A_n=\frac2{r_0^2J_0^2(\mu_n)}\int_0^{r_0}r^3J_0\left(\frac{\mu_nr}{r_0}\right)dr,\,\,\,
+n=1,2,.
+\end{gather*}
+
+
+
+Вычислим $A_n$, сделав в интеграле замену $\xi=\frac{\mu_nr}{r_0}$
+и воспользовавшись табличным интегралом (\cite[стр.7, формула (3.11)]{BesselMet}):
+\begin{gather*}\label{AnInt}
+A_n=\frac2{r_0^2J_0^2(\mu_n)}\cdot\frac{r_0^4}{\mu_n^4}
+\int_0^{\mu_n}\xi^3J_0(\xi)d\xi
+=\\
+=
+\frac2{J_0^2(\mu_n)}\cdot\frac{r_0^2}{\mu_n^4}
+[2\xi^2J_0(\xi)+(\xi^3-4\xi)J_1(\xi)]|^{\mu_n}_0=\\
+=
+\frac2{J_0^2(\mu_n)}\cdot\frac{r_0^2}{\mu_n^4}\cdot2\mu_n^2J_0(\mu_n)
+=\frac{4r_0^2}{\mu_n^2J_0(\mu_n)}.
+\end{gather*}
+Подставим найденные коэффициенты в ряд (\ref{heat:u:series}) и
+запишем решение задачи:
+\begin{gather*}
+u(r,t)=\frac{r_0^2}2+4r_0^2\sum\limits_{n=1}^\infty
+\frac{e^{-\left(\frac{a\mu_n}{r_0}\right)^2t}}{\mu_n^2J_0(\mu_n)}
+J_0\left(\frac{\mu_nr}{r_0}\right).
+\end{gather*}
+\end{Solution}
+
+\begin{Problem}\label{L23}
+Найти стационарную температуру $u(r,z)$ внутренних точек цилиндра с радиусом
+основания $r_0$ и высотой $h$, если температура нижнего основания зависит только от
+$r$ (расстояния от оси цилиндра), верхнее основание
+теплоизолировано, а боковая поверхность цилиндра свободно охлаждается
+в воздухе нулевой температуры.
+\end{Problem}
+\begin{Solution}
+Запишем однородное  уравнение теплопроводности
+\begin{gather*}%\label{heat:equation:stationary}
+u_t-a^2(u_{xx}+u_{yy}+u_{zz})=0.
+\end{gather*}
+
+Так как температура в каждой точке цилиндра установилась (не
+меняется с течением времени), то
+\begin{gather*}
+    u_t=0
+\end{gather*}
+и уравнение принимает вид
+\begin{gather}\label{heat:equation:stationary}
+u_{xx}+u_{yy}+u_{zz}=0.
+\end{gather}
+
+Поскольку верхнее основание цилиндра теплоизолировано, то
+тепловой поток через верхнее основание равен нулю, то есть
+\begin{gather}\label{heat:boundary:top}
+\left.k\frac{\partial u}{\partial n}\right|_{z=h}=0,
+\end{gather}
+где $n$ --- единичный вектор внешней нормали к верхнему основанию цилиндра.
+
+
+На боковой поверхности цилиндра
+происходит теплообмен с окружающей средой, температура которой равна нулю.
+В соответствии с законом Ньютона граничное условие теплообмена с окружающей средой
+имеет вид (\ref{Newton}). Так как температура внешней среды равна нулю, то
+\begin{gather}\label{heat:boundary:side}
+\left.\left(\frac{\partial u}{\partial n}+Hu\right)\right|_{r=r_0}=0,
+\end{gather}
+где $n$ --- единичный вектор внешней нормали к боковой поверхности цилиндра.
+
+Температура нижнего основания зависит только от
+$r$ (расстояния от оси цилиндра). Соответствующее граничное условие имеет вид
+\begin{gather}\label{heat:boundary:bottom}
+u|_{z=0}=u_0(r),\,\,\,r=\sqrt{x^2+y^2}.
+\end{gather}
+
+Сформулируем краевую задачу. Найти функцию $u(x,y,z)$,
+определённую в области $x^2+y^2\leq r_0^2$, $0\leq z\leq h$,
+удовлетворяющую уравнению (\ref{heat:equation:stationary})  и
+граничным условиям  (\ref{heat:boundary:top})--(\ref{heat:boundary:bottom}).
+
+Область (цилиндр), в которой решается задача,
+ограничена координатными поверхностями $z=0$, $z=h$, $r=r_0$ цилиндрической системы координат.
+В результате перехода к цилиндрическим координатам получим краевую задачу
+\begin{gather}\label{heat:cylindric_coords:stationary}
+\frac1r\frac\partial{\partial r}
+\left(r\frac{\partial u}{\partial r}\right)+
+\frac1{r^2}\frac{\partial^2u}{\partial \varphi^2}+\frac{\partial^2u}{\partial z^2}=0,\\
+\notag
+\left.\left(\frac{\partial u}{\partial r}+Hu\right)\right|_{r=r_0}=0,\,\,\,
+\left.\frac{\partial u}{\partial z}\right|_{z=h}=0,\,\,\,
+u|_{z=0}=u_0(r).
+\end{gather}
+Здесь учтено, что нормаль к боковой поверхности цилиндра направлена по радиусу,
+а нормаль к верхнему основанию направлена вдоль оси $z$.
+
+Так как правые части уравнения и  граничных условий не зависят от $\varphi$, решение задачи не
+зависит от $\varphi$,
+\begin{gather*}
+u=u(r,z),\,\,\,\frac{\partial u}{\partial \varphi}=0.
+\end{gather*}
+Кроме того, в особой точке
+уравнения (\ref{heat:simplified:cylindric_coords:stationary:equation}),
+запишем условие ограниченности решения. Таким образом, $u(r,z)$ должна удовлетворять уравнению
+\begin{gather}
+\label{heat:simplified:cylindric_coords:stationary:equation}
+\frac1r\frac\partial{\partial r}
+\left(r\frac{\partial u}{\partial r}\right)+\frac{\partial^2u}{\partial z^2}=0,\,\,\,0<r<r_0,\,\,\,0<z<h,
+\end{gather}
+и граничным условиям
+\begin{gather}
+\label{heat:simplified:cylindric_coords:stationary:top}
+u_z|_{z=h}=0,\,\,\,0\leq r\leq r_0,\\
+\label{heat:simplified:cylindric_coords:stationary:bottom}
+u|_{z=0}=u_0(r),\,\,\,0\leq r\leq r_0,\\
+\label{heat:simplified:cylindric_coords:stationary:side}
+(u_r+Hu)|_{r=r_0}=0,\,\,\,0\leq z\leq h,\\
+\label{heat:simplified:cylindric_coords:stationary:boundness}
+|u|_{r=0}|<\infty,\,\,\,0\leq z\leq h.
+\end{gather}
+
+Краевую задачу
+(\ref{heat:simplified:cylindric_coords:stationary:equation})--(\ref{heat:simplified:cylindric_coords:stationary:boundness})
+требуется решить внутри прямоугольника, изображённого на рис. \ref{fig1}.
+\begin{figure}[h]
+  % Requires \usepackage{graphicx}
+\centering
+{\unitlength=1mm
+\begin{picture}(70,45)
+\put(0,10){\vector(1,0){60}}
+\put(10,5){\vector(0,1){30}}
+\put(10,30){\line(1,0){40}}
+\put(50,30){\line(0,-1){20}}
+\put(5,27){$h$}
+\put(5,34){$z$}
+\put(50,5){$r_0$}
+\put(60,5){$r$}
+\end{picture}
+}
+  \caption{Область интегрирования уравнения (\ref{heat:simplified:cylindric_coords:stationary:equation})}
+  \label{fig1}
+\end{figure}
+
+
+
+
+В задаче
+(\ref{heat:simplified:cylindric_coords:stationary:equation})--(\ref{heat:simplified:cylindric_coords:stationary:boundness})
+нет начальных условий. В этом случае выбирается пара граничных
+условий на параллельных прямых за основные граничные условия.
+С другой парой граничных условий при решении методом разделения переменных
+поступают как с начальными условиями. В данной задаче условия на сторонах
+прямоугольника $r=0$ и $r=r_0$ являются однородными. Поэтому за основные
+граничные условия возьмём именно их.
+
+\label{urz:razd:per:1}
+Разделим переменные в уравнении (\ref{heat:simplified:cylindric_coords:stationary:equation})
+и граничных условиях (\ref{heat:simplified:cylindric_coords:stationary:side}),
+(\ref{heat:simplified:cylindric_coords:stationary:boundness}). Для этого подставим произведение
+\begin{gather}\label{heat:stationary:special_solution}
+u(r,z)=R(r)Z(z)
+\end{gather}
+в уравнение (\ref{heat:simplified:cylindric_coords:stationary:equation})
+и граничные условия (\ref{heat:simplified:cylindric_coords:stationary:side}),
+(\ref{heat:simplified:cylindric_coords:stationary:boundness}).
+
+\begin{comment}
+\begin{gather*}
+\frac{Z(z)}r\frac{d}{dr}\left(r\frac{dR(r)}{dr}\right)+
+R(r)\frac{d^2Z(z)}{dz^2}=0.
+\end{gather*}
+Поделив на $Z9z)R(r)$, получим равенство
+\begin{gather}\label{ZRequation}
+\frac{1}{rR(r)}\frac{d}{dr}\left(r\frac{dR(r)}{dr}\right)=-
+\frac1{Z(z)}\frac{d^2Z(z)}{dz^2},
+\end{gather}
+которое должно выполняться при всех $0<r<r_0$, $0<z<h$.
+
+Из равенства (\ref{ZRequation}) следует, что при фиксированном $z$ левая часть при
+всех $0<r<r_0$ сохраняет постоянное значение и при фиксированном
+$r$  правая часть при всех $z$ также сохраняет постоянное значение.
+Таким образом,
+\begin{gather*}
+\frac{1}{rR(r)}\frac{d}{dr}\left(r\frac{dR(r)}{dr}\right)=-
+\frac1{Z(z)}\frac{d^2Z(z)}{dz^2}=-\lambda.
+\end{gather*}
+\end{comment}
+В результате получим
+\begin{gather}
+\label{heat:stationary:Zequation}
+Z''(z)-\lambda Z(z)=0,\\
+\label{heat:stationary:Requation}
+\frac{d}{dr}\left(r\frac{dR(r)}{dr}\right)+\lambda rR(r)=0;\\
+\label{bcRd:stationary}
+|R(0)|<\infty,\,\,\,R'(r_0)+HR(r_0)=0.
+\end{gather}
+\label{urz:razd:per:2}
+
+Выпишем собственные числа и собственные функции задачи Штурма--Лиувилля
+(\ref{heat:stationary:Requation}), (\ref{bcRd:stationary})(\cite[стр.34--36]{BesselMet}).
+Собственные числа определяются соотношениями
+\begin{gather*}
+\lambda_n=
+\left(\frac{\mu_n}{r_0}\right)^2,\,\,\,
+n=1,2,\dots,
+\end{gather*}
+где $0<\mu_1<\mu_2<\dots<\mu_n<\dots$ --- положительные корни уравнения
+$J_0'(\mu)\mu+Hr_0J_0(\mu)=0$.
+Соответствующие собственные функции и их нормы имеют вид
+\begin{gather}\label{SchturmLiouvilleR2:solution}
+R_n(r)=J_0\left(\frac{\mu_nr}{r_0}\right),\\
+\notag
+\|R_n\|^2=\frac{r_0^2}2\left[1+\frac{H^2r_0^2}{\mu_n^2}\right]J_0^2(\mu_n),\,\,\,
+n=1,2,\dots
+\end{gather}
+Подставим собственные значения $\lambda_n$ в уравнение (\ref{heat:stationary:Zequation}),
+а решения, соответствующие этим $\lambda_n$, обозначим $Z_n(z)$:
+\begin{gather}\label{ZnEquation}
+Z_n''(z)-
+\left(\frac{\mu_n}{r_0}\right)^2Z_n(z)=0,\,\,\,n=1,2,\dots
+\end{gather}
+Общие решения этих уравнений запишем в виде
+\begin{gather*}
+Z_n(z)=A_n\ch\left(\frac{\mu_n(z-h)}{r_0}\right)+
+B_n\sh\left(\frac{\mu_nz}{r_0}\right),
+\,\,n=1,2,\dots
+\end{gather*}
+Здесь в качестве фундаментальной системы решений уравнения (\ref{ZnEquation})
+использовались $\ch\left(\frac{\mu_n(z-h)}{r_0}\right)$ и
+$\sh\left(\frac{\mu_nz}{r_0}\right)$. Первая функция удовлетворяет условию
+\begin{gather}\label{dZnInh}
+Z_n'(h)=0,
+\end{gather}
+а вторая --- условию
+\begin{gather}\label{ZnIn0}
+Z_n(0)=0.
+\end{gather}
+Условия (\ref{dZnInh}), (\ref{ZnIn0}) --- это однородные условия, соответствующие
+граничным условиям
+(\ref{heat:simplified:cylindric_coords:stationary:top}),
+(\ref{heat:simplified:cylindric_coords:stationary:bottom}).
+При таком выборе фундаментальной системы решений не приходится в дальнейшем\label{rec:parall}
+решать системы уравнений для коэффициентов $A_n$ и $B_n$ и упрощать решение.
+
+Запишем частные решения задачи
+  (\ref{heat:simplified:cylindric_coords:stationary:equation}),
+ (\ref{heat:simplified:cylindric_coords:stationary:side}),
+(\ref{heat:simplified:cylindric_coords:stationary:boundness}), имеющие вид
+(\ref{heat:stationary:special_solution}):
+\begin{gather*}
+u_n(r,z)=Z_n(z)R_n(r)=\\
+%\end{gather*}
+%\begin{gather*}
+=
+\left[A_n\ch\left(\frac{\mu_n(z-h)}{r_0}\right)+
+B_n\sh\left(\frac{\mu_nz}{r_0}\right)\right]J_0\left(\frac{\mu_nr}{r_0}\right),\\
+n=1,2,\dots
+\end{gather*}
+В соответствии с принципом дискретной суперпозиции составим новые решения уравнения
+(\ref{heat:simplified:cylindric_coords:stationary:equation}),
+удовлетворяющие условиям
+ (\ref{heat:simplified:cylindric_coords:stationary:side}),
+(\ref{heat:simplified:cylindric_coords:stationary:boundness}):
+\begin{gather}\label{heat:u:stationary:series}
+u(r,z)=\sum\limits_{n=1}^\infty u_n(r,z)=\\
+=\notag
+\sum\limits_{n=1}^\infty
+\left[A_n\ch\left(\frac{\mu_n(z-h)}{r_0}\right)+
+B_n\sh\left(\frac{\mu_nz}{r_0}\right)\right]
+J_0\left(\frac{\mu_nr}{r_0}\right).
+\end{gather}
+
+Среди решений (\ref{heat:u:stationary:series}) выберем такое, которое удовлетворяют
+условиям (\ref{heat:simplified:cylindric_coords:stationary:top}),
+(\ref{heat:simplified:cylindric_coords:stationary:bottom}).
+Продифференцируем ряд (\ref{heat:u:stationary:series}) по $z$:
+\begin{gather}\label{heat:u_z:stationary:series}
+u_z(r,z)=
+\sum\limits_{n=1}^\infty
+\frac{\mu_n}{r_0}\biggl[A_n\sh\left(\frac{\mu_n(z-h)}{r_0}\right)+\\
+%\end{gather}
+%\begin{gather*}
++\notag
+B_n\ch\left(\frac{\mu_nz}{r_0}\right)\biggr]
+J_0\left(\frac{\mu_nr}{r_0}\right).
+\end{gather}
+Подставляя  (\ref{heat:u:stationary:series}) и  (\ref{heat:u_z:stationary:series})
+в граничные условия
+ (\ref{heat:simplified:cylindric_coords:stationary:top}) и
+(\ref{heat:simplified:cylindric_coords:stationary:bottom}),
+ будем иметь
+\begin{gather}
+\label{AnBnEq1}
+\sum\limits_{n=1}^\infty
+A_n\ch\left(\frac{\mu_nh}{r_0}\right)
+J_0\left(\frac{\mu_nr}{r_0}\right)=u_0(r),\\
+%\end{gather}
+%\begin{gather}
+\label{AnBnEq2}
+\sum\limits_{n=1}^\infty
+\frac{\mu_n}{r_0}B_nJ_0\left(\frac{\mu_nr}{r_0}\right)=0.
+\end{gather}
+Отсюда по формулам \cite[(2.4)]{Fourier1} найдём, что
+\begin{gather}\label{AnBnSteklov}
+A_n\ch\left(\frac{\mu_nh}{r_0}\right)=%\\
+\end{gather}
+\begin{gather}
+=\notag
+\frac{2\mu_n^2}{r_0^2(\mu_n^2+H^2r_0^2)J_0^2(\mu_n)}
+\int\limits_0^{r_0}ru_0(r)J_0\left(\frac{\mu_nr}{r_0}\right)dr\equiv\alpha_n,\\
+\notag
+\frac{\mu_n}{r_0}B_n=0,\,\,\,n=1,2,\dots
+\end{gather}
+
+Подставляя коэффициенты $A_n$ и $B_n$ в ряд (\ref{heat:u:stationary:series}), получим решение задачи:
+\begin{gather*}
+u(r,z)=\sum\limits_{n=1}^\infty
+\frac{\alpha_n\ch\left(\frac{\mu_n(z-h)}{r_0}\right)}{\ch
+\left(\frac{\mu_nh}{r_0}\right)}
+J_0\left(\frac{\mu_nr}{r_0}\right).
+\end{gather*}
+
+\end{Solution}
+
+\section{Метод Фурье для неоднородных уравнений с однородными граничными условиями}\label{NEODN_UR:ODN_GR_USL}
+\begin{Problem}\label{L31}
+Исследовать колебания закреплённой по краю круглой мембраны радиуса $r_0$ с центром в начале координат.
+Колебания вызваны внешней силой, равномерно распределённой с плотностью
+$q(t)=A\sin\omega t$ по площади кольца $r_1<r<r_2$ ($\omega\neq\frac{a\mu_n}{r_0}$,
+где $0<\mu_1<\mu_2<\dots<\mu_n<\dots$ --- положительные нули функции Бесселя $J_0(\mu)$).
+\end{Problem}
+
+\begin{Solution}
+По условию задачи колебания мембраны вызваны внешней силой. Поэтому запишем неоднородное волновое уравнение
+\begin{equation}\label{volnur2Dssoprvn}
+u_{tt}-a^2(u_{xx}+u_{yy})=\frac{f(r,t)}\rho,
+\end{equation}
+где $\rho$ --- поверхностная плотность мембраны, $r=\sqrt{x^2+y^2}$,
+\begin{gather}\label{frt}
+f(r,t)=\begin{cases}
+A\sin\omega t,\mbox{ $r_1<r<r_2$;}\cr
+0,\mbox{ $0<r<r_1$ или $r_2<r<r_0$.}
+\end{cases}
+\end{gather}
+
+
+Поскольку о начальной скорости и начальном отклонении в задаче ничего не сказано, то предполагается, что
+они равны нулю, т.е.
+\begin{gather}\label{nachformamembrvn}
+u|_{t=0}=0,\\
+\label{nacscormembrvn}
+u_t|_{t=0}=0,
+\end{gather}
+и колебания мембраны вызваны только внешней силой.
+
+Кроме начальных условий следует задать граничное условие. Это условие для жёстко закреплённого края
+мембраны имеет вид
+\begin{equation}\label{gruslmembrvn}
+u|_{x^2+y^2=r_0^2}=0.
+\end{equation}
+
+Сформулируем начально--краевую задачу. Найти функцию $u(x,y,t)$, определённую в области
+$x^2+y^2\leq r_0^2$, $t\geq0$, удовлетворяющую уравнению (\ref{volnur2Dssoprvn})
+в области $x^2+y^2< r_0^2$, $t>0$, начальным условиям (\ref{nachformamembrvn}), (\ref{nacscormembrvn}) и граничному условию
+(\ref{gruslmembrvn}).
+
+Будем использовать полярную систему координат, так как мембрана круглая.
+Выпишем уравнение (\ref{volnur2Dssoprvn}), начальные условия
+(\ref{nachformamembrvn}) и (\ref{nacscormembrvn}), и граничное условие (\ref{gruslmembrvn}) в
+полярной системе координат
+\begin{gather}\label{volnur2Dssoprpolsystvn}
+u_{tt}-a^2\left[
+\frac1r
+\frac\partial{\partial r}
+\left(r\frac{\partial u}{\partial r}\right)+
+\frac1{r^2}\frac{\partial^2u}{\partial\varphi^2}\right]=\frac{f(r,t)}{\rho},\\
+\notag
+u|_{t=0}=0,\,\,\,%
+\notag
+u_t|_{t=0}=0,\\
+\notag
+u|_{r=r_0}=0.
+\end{gather}
+
+В силу того, что правая часть уравнения (\ref{volnur2Dssoprpolsystvn}) не зависит от $\varphi$,
+ решение задачи также не зависит от $\varphi$,
+\begin{gather*}
+u=u(r,t),\,\,\,\frac{\partial u}{\partial\varphi}=0,
+\end{gather*}
+и задача (\ref{volnur2Dssoprpolsystvn}) упрощается:
+\begin{gather}\label{volnur2Dssoprpolsyst:uprvn}
+u_{tt}-\frac{a^2}r\frac\partial{\partial r}\left(r\frac{\partial u}{\partial r}\right)=
+\frac{f(r,t)}{\rho},\,\,\,0<r<r_0,\,\,\,t>0,\\
+\label{volnur2Dssoprpolsyst:upr:otklvn}
+u|_{t=0}=0,\,\,\,0\leq r\leq r_0,\\
+\label{volnur2Dssoprpolsyst:upr:scorvn}
+u_t|_{t=0}=0,\,\,\,0\leq r\leq r_0,\\
+\label{volnur2Dssoprpolsyst:upr:gruslvn}
+u|_{r=r_0}=0,\,\,\,t\geq0.
+\end{gather}
+
+Для уравнения (\ref{volnur2Dssoprpolsyst:uprvn}) с особой точкой $r=0$ следует добавить условие
+ограниченности решения в этой точке в любой момент времени
+\begin{gather}\label{volnur2Dssoprpolsyst:upr:grusl_ogrvn}
+|u|_{r=0}|<\infty,\,\,\,t\geq0.
+\end{gather}
+
+Решение задачи для неоднородного уравнения с однородными граничными условиями ищется
+в виде ряда по подходящей системе собственных функций.
+Чтобы определить систему собственных функций, подходящую для решения задачи
+(\ref{volnur2Dssoprpolsyst:uprvn})--(\ref{volnur2Dssoprpolsyst:upr:grusl_ogrvn})
+ рассмотрим вспомогательную краевую задачу о нахождении нетривиальных решений специального вида
+\begin{equation}\label{spsolutionvn}
+  v(r,t)=R(r)T(t),
+\end{equation}
+однородного уравнения, соответствующего уравнению (\ref{volnur2Dssoprpolsyst:uprvn}),
+\begin{gather}\label{auxprobluravn}
+v_{tt}-\frac{a^2}r\frac\partial{\partial r}\left(r\frac{\partial v}{\partial r}\right)=0,\,\,\,0<r<r_0,
+\,\,\,t>0,
+\end{gather}
+удовлетворяющих граничным условиям (\ref{volnur2Dssoprpolsyst:upr:gruslvn}), (\ref{volnur2Dssoprpolsyst:upr:grusl_ogrvn}),
+\begin{gather}
+\label{auxproblgr}
+v|_{r=r_0}=0,\,\,\,t\geq0,\\
+\label{auxproblcenter}
+|v|_{r=0}|<\infty,\,\,\,t\geq0.
+\end{gather}
+
+Подставляя (\ref{spsolutionvn}) в (\ref{auxprobluravn})--(\ref{auxproblcenter}), будем иметь
+\begin{gather}
+%\label{Tequationvn}
+\notag
+T''(t)+a^2\lambda T(t)=0,\\
+\label{Requationvn}
+\frac{d}{dr}\left(r\frac{dR(r)}{dr}\right)+\lambda rR(r)=0,\\
+\label{bcRvn}
+|R(0)|<\infty,\,\,\,R(r_0)=0.
+\end{gather}
+Задача Штурма--Лиувилля (\ref{Requationvn}), (\ref{bcRvn}) уже использовалась при решении задачи \ref{p21}.
+Её собственные функции, их нормы и собственные числа определяются формулами (\ref{SchturmLiouvilleR:solution}).
+
+Полное решение вспомогательной задачи (\ref{auxprobluravn})--(\ref{auxproblcenter})
+не требуется для решения начально--краевой задачи
+(\ref{volnur2Dssoprpolsyst:uprvn})--(\ref{volnur2Dssoprpolsyst:upr:grusl_ogrvn}). В дальнейшем используются
+только собственные функции (\ref{SchturmLiouvilleR:solution}).
+Поскольку собственные функции образуют полную ортогональную систему,
+решение $u(r,t)$ задачи (\ref{volnur2Dssoprpolsyst:uprvn})--(\ref{volnur2Dssoprpolsyst:upr:grusl_ogrvn})
+представим в виде ряда:
+\begin{gather}\label{urtseries}
+u(r,t)=\sum\limits_{n=1}^\infty C_n(t)R_n(r).
+\end{gather}
+Ряд (\ref{urtseries}) удовлетворяет граничным условиям (\ref{volnur2Dssoprpolsyst:upr:gruslvn}),
+(\ref{volnur2Dssoprpolsyst:upr:grusl_ogrvn}). Подберём функции $C_n(t)$ так, чтобы ряд удовлетворял уравнению
+ (\ref{volnur2Dssoprpolsyst:uprvn}) и начальным условиям (\ref{volnur2Dssoprpolsyst:upr:otklvn}),
+(\ref{volnur2Dssoprpolsyst:upr:scorvn}).
+
+Подставив ряд (\ref{urtseries}) в уравнение (\ref{volnur2Dssoprpolsyst:uprvn}), получим
+\begin{gather}\label{volnur2Dssoprpolsyst:uprvn:sumsum}
+\sum\limits_{n=1}^\infty C_n''(t)R_n(r)-a^2\sum\limits_{n=1}^\infty\frac{C_n(t)}{r}\frac{d}{dr}(
+rR_n'(r))=\frac{f(r,t)}{\rho}.
+\end{gather}
+Так как функция $R_n(r)$ является решением уравнения (\ref{Requationvn}), в котором
+$\lambda=\left(\frac{\mu_n}{r_0}\right)^2$, то имеет место тождество
+\begin{gather}\label{Rn:eq:}
+\frac{1}{r}\frac{d}{dr}(rR_n'(r))=-\left(\frac{\mu_n}{r_0}\right)^2R_n(r).
+\end{gather}
+Учитывая (\ref{Rn:eq:}) и используя обозначение $\omega_n=\frac{a\mu_n}{r_0}$,
+преобразуем (\ref{volnur2Dssoprpolsyst:uprvn:sumsum}) к виду
+\begin{gather*}
+\sum\limits_{n=1}^\infty\left[C_n''(t)+\left(\frac{a\mu_n}{r_0}\right)^2C_n(t)\right]R_n(r)=\frac{f(r,t)}{\rho}.
+\end{gather*}
+Данное равенство можно рассматривать как разложение заданной функции $\frac{f(r,t)}{\rho}$ в ряд по
+собственным функциям (\ref{SchturmLiouvilleR:solution}). Коэффициенты разложения с одной стороны выражаются
+через функции $C_n(t)$, с другой определяются формулами \cite[(2.4)]{Fourier1}. Поэтому
+\begin{gather}\label{TnEq}
+C_n''(t)+\omega_n^2C_n(t)=
+\frac1{\|R_n\|^2}\int\limits_0^{r_0}\frac{f(r,t)}{\rho}rR_n(r)dr.
+\end{gather}
+Используя явный вид функции $f(r,t)$ (формула (\ref{frt})), а также собственных функций и их норм
+(формулы  (\ref{SchturmLiouvilleR:solution})), запишем
+\begin{gather}\label{:Cn:eq}
+C_n''(t)+\omega_n^2C_n(t)=\frac{2A\sin\omega t}{r_0^2J_1^2(\mu_n)\rho}
+\int\limits_{r_1}^{r_2}rJ_0\left(\frac{\mu_nr}{r_0}\right)dr.
+\end{gather}
+Вычислим интеграл, стоящий в правой части данного уравнения, сделав замену $z=\frac{\mu_nr}{r_0}$
+и применив формулу \cite[(3.9)]{BesselMet}:\label{r1r2rJ0drINT}
+\begin{gather*}\label{intrJ0mu_nrr0dr}
+\int\limits_{r_1}^{r_2}rJ_0\left(\frac{\mu_nr}{r_0}\right)dr=
+\frac{r_0^2}{\mu_n^2}\int\limits_{\frac{\mu_nr_1}{r_0}}^{\frac{\mu_nr_2}{r_0}}zJ_0(z)dz=\\
+=\frac{r_0}{\mu_n}\biggl[r_2J_1\left(\frac{\mu_nr_2}{r_0}\right)-
+r_1J_1\left(\frac{\mu_nr_1}{r_0}\right)\biggr].
+\end{gather*}
+
+
+Введём обозначение
+\begin{gather}\label{Mn:def}
+M_n=\frac{2A}{J_1^2(\mu_n)\rho\mu_nr_0}\biggl[r_2J_1\left(\frac{\mu_nr_2}{r_0}\right)-
+r_1J_1\left(\frac{\mu_nr_1}{r_0}\right)\biggr]
+\end{gather}
+и перепишем уравнение (\ref{:Cn:eq}) в виде
+\begin{gather}\label{:Cn:eq1}
+С_n''(t)+\omega_n^2C_n(t)=M_n\sin\omega t.
+\end{gather}
+Подставив ряд (\ref{urtseries}) в начальные условия
+(\ref{volnur2Dssoprpolsyst:upr:otklvn}), (\ref{volnur2Dssoprpolsyst:upr:scorvn}), получим, что
+\begin{gather}\label{TnOtkl}
+C_n(0)=0,\\
+\label{TnScor}
+C_n'(0)=0.
+\end{gather}
+
+Запишем общее решение однородного уравнения, соответствующего уравнению (\ref{:Cn:eq1}):
+\begin{gather}\label{TnGsHEq}
+C_n^{оо}(t)=B_n\cos\omega_nt+A_n\sin\omega_nt.
+\end{gather}
+Частное решение $C_n^{чн}$ неоднородного уравнения (\ref{:Cn:eq1}) будем искать в виде
+\begin{gather*}
+C_n^{чн}(t)=D_n\sin\omega t.
+\end{gather*}
+Подставив $C_n^{чн}$ в уравнение (\ref{:Cn:eq1}), получим, что
+\begin{gather*}
+D_n[-\omega^2+\omega_n^2]\sin\omega t=M_n\sin\omega t.
+\end{gather*}
+Отсюда
+\begin{gather*}
+D_n=\frac{M_n}{\omega_n^2-\omega^2}.
+\end{gather*}
+Таким образом,
+\begin{gather}\label{TnPsNHEq}
+C_n^{чн}(t)=\frac{M_n\sin\omega t}{\omega_n^2-\omega^2}.
+\end{gather}
+Общее решение неоднородного уравнения равно сумме общего решения однородного уравнения и
+частного решения (\ref{TnPsNHEq}):
+\begin{gather}\label{TnGsNHEq}
+C_n(t)=B_n\cos\omega_nt+A_n\sin\omega_nt+\frac{M_n\sin\omega t}{\omega_n^2-\omega^2}.
+\end{gather}
+Коэффициенты $A_n$, $B_n$ находим из начальных условий (\ref{TnOtkl}), (\ref{TnScor}).
+Подставляя функцию (\ref{TnGsNHEq}) в условия (\ref{TnOtkl}), (\ref{TnScor}), получим
+\begin{gather}
+\label{Bn:expr}
+B_n=0,\\
+\label{An:expr}
+A_n=-\frac{M_n\omega}{\omega_n(\omega_n^2-\omega^2)}.
+\end{gather}
+
+
+Учитывая (\ref{Bn:expr}), (\ref{An:expr}), из (\ref{TnGsNHEq}) найдём решение задачи
+(\ref{:Cn:eq1})--(\ref{TnScor}):
+\begin{gather*}
+C_n(t)=\frac{M_n}{\omega_n(\omega_n^2-\omega^2)}[\omega_n\sin\omega t-\omega\sin\omega_nt].
+\end{gather*}
+В соответствии с (\ref{urtseries}), запишем теперь ответ задачи:
+\begin{gather}\label{urte}
+u(r,t)=\sum\limits_{n=1}^\infty
+\frac{M_n}{\omega_n(\omega_n^2-\omega^2)}[\omega_n\sin\omega t-\omega\sin\omega_nt]
+J_0\left(\frac{\mu_nr}{r_0}\right).
+\end{gather}
+Здесь коэффициенты $M_n$ определяются формулами (\ref{Mn:def}).
+
+Заметим, что решение (\ref{urte}) можно представить в виде суммы двух рядов. Обе представленные рядами
+функции удовлетворяют однородным граничным условиям
+(\ref{volnur2Dssoprpolsyst:upr:gruslvn}), (\ref{volnur2Dssoprpolsyst:upr:grusl_ogrvn}),
+но различным уравнениям: первая  --- неоднородному уравнению (\ref{volnur2Dssoprpolsyst:uprvn}),
+а вторая --- соответствующему однородному уравнению. Так как первая функция имеет специальный вид
+\begin{gather}\label{up}
+u_ч(r,t)=g(r)\sin\omega t,
+\end{gather}
+%где $g(r)$ --- непрерывно дифференцируемая на интервале $(0,r_0)$ функция.
+то сумму первого ряда, члены которого зависят только от $r$, можно найти в явном виде.
+
+Подставив функцию (\ref{up}) в уравнение (\ref{volnur2Dssoprpolsyst:uprvn}) и в граничные условия
+ (\ref{volnur2Dssoprpolsyst:upr:gruslvn}), (\ref{volnur2Dssoprpolsyst:upr:grusl_ogrvn}),
+получим, что $g(r)$ --- решение краевой задачи
+\begin{gather}
+\label{grbp:eq}
+\frac1r\frac{d}{dr}\left(r\frac{dg(r)}{dr}\right)+\left(\frac{\omega}{a}\right)^2g(r)=
+-\frac{A}{a^2\rho}\chi(r),\,\,\,0<r<r_0;\\
+\label{grbp:ogr}
+|g(0)|<\infty;\\
+\label{grbp:bcr0}
+g(r_0)=0.
+\end{gather}
+Здесь через $\chi(r)$ обозначена характеристическая функция отрезка $[r_1,r_2]$, т.е. функция, равная единице
+на отрезке $[r_1,r_2]$, и равная нулю вне этого отрезка. Иными словами, правая часть уравнения
+ (\ref{grbp:eq}) задаётся разными выражениями на разных участках интервала $(0,r_0)$.
+
+Общее решение однородного уравнения, соответствующего уравнению (\ref{grbp:eq}), можно записать в виде
+комбинации функций Бесселя и Неймана \cite[(4.2)]{BesselMet}. Решение неоднородного уравнения
+(\ref{grbp:eq}) будем искать методом вариации произвольных постоянных
+\begin{equation}\label{grPrP}
+g(r)=C_1(r)J_0\left(\frac{\omega r}{a}\right)+C_2(r)N_0\left(\frac{\omega r}{a}\right).
+\end{equation}
+Найдём производную:
+\begin{gather}\label{prgrPrP}
+g'(r)=C_1'(r)J_0\left(\frac{\omega r}{a}\right)+C_2'(r)N_0\left(\frac{\omega r}{a}\right)+\\
++\notag\frac\omega{a}\left(
+C_1(r)J_0'\left(\frac{\omega r}{a}\right)+C_2(r)N_0'\left(\frac{\omega r}{a}\right)\right).
+\end{gather}
+Выберем функции $C_1(r)$ и $C_2(r)$ так, чтобы
+\begin{equation}\label{C1prC2pr}
+C_1'(r)J_0\left(\frac{\omega r}{a}\right)+C_2'(r)N_0\left(\frac{\omega r}{a}\right)=0.
+\end{equation}
+Тогда
+\begin{gather}\label{prgrPrP1}
+g'(r)=\frac\omega{a}\left(
+C_1(r)J_0'\left(\frac{\omega r}{a}\right)+C_2(r)N_0'\left(\frac{\omega r}{a}\right)\right).
+\end{gather}
+
+Вычислим вторую производную $g''(r)$ и подставим $g'(r)$ и $g''(r)$ в уравнение (\ref{grbp:eq}).
+Поскольку $J_0\left(\frac{\omega r}{a}\right)$ и $N_0\left(\frac{\omega r}{a}\right)$ удовлетворяют
+однородному уравнению, то
+\begin{equation}\label{C1prC2prpr}
+\frac\omega{a}(C_1'(r)J_0'\left(\frac{\omega r}{a}\right)+C_2'(r)N_0'\left(\frac{\omega r}{a}\right))=
+-\frac{A}{a^2\rho}\chi(r).
+\end{equation}
+
+Функции $C_1'(r)$ и $C_2'(r)$ определяются из системы (\ref{C1prC2pr}), (\ref{C1prC2prpr}).
+Определитель системы совпадает с определителем Вронского для функций Бесселя и Неймана \cite[стр. 255]{arsenin},
+\begin{gather*}
+\Delta=W\left( J_0\left(\frac{\omega r}{a}\right),N_0\left(\frac{\omega r}{a}\right) \right)=\frac2{\pi r}.
+\end{gather*}
+
+Из системы уравнений (\ref{C1prC2pr}), (\ref{C1prC2prpr}) по формулам Крамера найдём
+\begin{gather}
+\label{C1pr}
+C_1'(r)=\frac{\pi rA}{2a^2\rho}\chi(r)N_0\left(\frac{\omega r}{a}\right),\\
+\label{C2pr}
+C_2'(r)=-\frac{\pi rA}{2a^2\rho}\chi(r)J_0\left(\frac{\omega r}{a}\right).
+\end{gather}
+Сформулируем краевые условия для функций$C_1(r)$ и $C_2(r)$. Из условия ограниченности (\ref{grbp:ogr})
+для функции (\ref{grPrP}) следует, что
+\begin{equation}\label{C2in0}
+C_2(0)=0,
+\end{equation}
+так как функция $N_0\left(\frac{\omega r}{a}\right)$ имеет в точке $r=0$ логарифмическую особенность
+\cite[(4.13)]{BesselMet}. Подставляя (\ref{grPrP}) в граничное условие (\ref{grbp:bcr0}), получим
+\begin{gather}\label{C1C2r0}
+C_1(r_0)J_0\left(\frac{\omega r_0}{a}\right)+C_2(r_0)N_0\left(\frac{\omega r_0}{a}\right)=0.
+\end{gather}
+Отсюда
+\begin{equation}\label{C1inr0}
+C_1(r_0)=-\frac{C_2(r_0)N_0\left(\frac{\omega r_0}{a}\right)}{J_0\left(\frac{\omega r_0}{a}\right)}.
+\end{equation}
+Интегрируя (\ref{C2pr}) по промежутку $[0,r]$, с учётом (\ref{C2in0}) будем иметь
+\begin{gather}\label{C2rExpr}
+C_2(r)=-\frac{\pi A}{2a^2\rho}\int\limits_0^r\xi\chi(\xi)J_0\left(\frac{\omega \xi}{a}\right)d\xi.
+\end{gather}
+Подставляя в интеграл (\ref{C2rExpr}) характеристическую функцию $\chi(\xi)$ и пользуясь свойством аддитивности
+интеграла, получим
+\begin{gather}\label{C2rIntExpr}
+\int\limits_0^r\xi\chi(\xi)J_0\left(\frac{\omega \xi}{a}\right)d\xi=
+    \begin{cases}
+      0,\mbox{ $0\leq r<r_1$;}\cr
+      \int_{r_1}^r\xi J_0\left(\frac{\omega \xi}{a}\right)d\xi,\mbox{ $r_1\leq r<r_2$;}\cr
+      \int_{r_1}^{r_2}\xi J_0\left(\frac{\omega \xi}{a}\right)d\xi,\mbox{ $r_2\leq r\leq r_0$.}
+    \end{cases}
+\end{gather}
+В интегралах (\ref{C2rIntExpr}) сделаем замену $z=\frac\omega{a}\xi$, применим формулу \cite[(3.9)]{BesselMet}
+и введём обозначение
+\begin{gather*}
+\int_{r_1}^{r_2}\xi J_0\left(\frac{\omega \xi}{a}\right)d\xi=\frac a\omega\left[
+r_2J_1\left(\frac{\omega r_2}{a}\right)-r_1J_1\left(\frac{\omega r_1}{a}\right)\right]=\alpha\frac a\omega.
+\end{gather*}
+В результате получим
+\begin{gather}\label{C2ExprFin}
+C_2(r)=
+    \begin{cases}
+      0,\mbox{ $0\leq r<r_1$;}\cr
+      -\frac{\pi A}{2a\omega\rho}
+\left[rJ_1\left(\frac{\omega r}{a}\right)-r_1J_1\left(\frac{\omega r_1}{a}\right)\right],
+\mbox{ $r_1\leq r<r_2$;}\cr
+      -\frac{\pi A}{2a\omega\rho}\alpha,\mbox{ $r_2\leq r\leq r_0$.}
+    \end{cases}
+\end{gather}
+
+Из (\ref{C2ExprFin}) следует, что
+\begin{gather}\label{C2inr0}
+C_2(r_0)=-\frac{\pi A}{2a\omega\rho}\alpha.
+\end{gather}
+Поэтому, в соответствии с (\ref{C1inr0}),
+\begin{equation}\label{C1inr0Fin}
+C_1(r_0)=
+\frac{\pi A\alpha N_0\left(\frac{\omega r_0}{a}\right)}{2a\omega\rho J_0\left(\frac{\omega r_0}{a}\right)}.
+\end{equation}
+Учитывая (\ref{C1inr0Fin}), проинтегрируем (\ref{C1pr}) по промежутку $[r,r_0]$:
+\begin{gather}\label{C1Expr1}
+C_1(r)=-\frac{\pi A}{2a^2\rho}\int\limits_r^{r_0}
+\xi\chi(\xi)N_0\left(\frac{\omega \xi}{a}\right)d\xi+
+\frac{\pi A\alpha N_0\left(\frac{\omega r_0}{a}\right)}{2a\omega\rho J_0\left(\frac{\omega r_0}{a}\right)}.
+\end{gather}
+Интеграл в (\ref{C1Expr1}) вычисляется аналогично интегралу (\ref{C2rIntExpr}). В результате получим
+\begin{gather}\label{C1rIntExpr}
+\int\limits_r^{r_0}\xi\chi(\xi)N_0\left(\frac{\omega \xi}{a}\right)d\xi=
+    \begin{cases}
+      \int_{r_1}^{r_2}\xi J_0\left(\frac{\omega \xi}{a}\right)d\xi,\mbox{ $0\leq r<r_1$;}\cr
+      \int_{r}^{r_2}\xi J_0\left(\frac{\omega \xi}{a}\right)d\xi,\mbox{ $r_1\leq r<r_2$;}\cr
+      0,\mbox{ $r_2\leq r\leq r_0$.}
+    \end{cases}
+\end{gather}
+
+Формула \cite[(3.9)]{BesselMet} справедлива для любой цилиндрической функции. Обозначим
+\begin{gather*}
+\int_{r_1}^{r_2}\xi N_0\left(\frac{\omega \xi}{a}\right)d\xi=\frac a\omega\left[
+r_2N_1\left(\frac{\omega r_2}{a}\right)-r_1N_1\left(\frac{\omega r_1}{a}\right)\right]=\beta\frac a\omega.
+\end{gather*}
+Тогда после вычисления интегралов в (\ref{C1rIntExpr}) и подстановки их в (\ref{C1Expr1}) найдём
+\begin{gather}\label{C1ExprFin}
+C_1(r)=\begin{cases}
+        \frac{\pi A}{2a\omega\rho}\left(-\beta+\alpha
+        \frac{N_0\left(\frac{\omega r_0}{a}\right)}{J_0\left(\frac{\omega r_0}{a}\right)}\right),
+        \mbox{ $0\leq r<r_1$;}\cr
+        \frac{\pi A}{2a\omega\rho}\left(
+        -r_2N_1\left(\frac{\omega r_2}{a}\right)+rN_1\left(\frac{\omega r}{a}\right)+
+        \alpha
+        \frac{N_0\left(\frac{\omega r_0}{a}\right)}{J_0\left(\frac{\omega r_0}{a}\right)}\right),%\cr
+        \mbox{ $r_1\leq r<r_2$;}\cr
+        \frac{\pi A\alpha N_0\left(\frac{\omega r_0}{a}\right)}{2a\omega\rho
+        J_0\left(\frac{\omega r_0}{a}\right)},
+        \mbox{ $r_2\leq r\leq r_0$.}
+       \end{cases}
+\end{gather}
+Осталось подставить функции (\ref{C2ExprFin}), (\ref{C1ExprFin}) в (\ref{grPrP}). В результате получим
+\begin{gather}\label{grExpr}
+g(r)=\begin{cases}
+     \frac{\pi A}{2a\omega\rho}\left(-\beta+\alpha
+        \frac{N_0\left(\frac{\omega r_0}{a}\right)}{J_0\left(\frac{\omega r_0}{a}\right)}\right)
+        J_0\left(\frac{\omega}{a}r\right),
+        \mbox{ $0\leq r<r_1$;}\cr
+     \frac{\pi A}{2a\omega\rho}\biggl\{
+    \left(
+        -r_2N_1\left(\frac{\omega r_2}{a}\right)+\alpha
+        \frac{N_0\left(\frac{\omega r_0}{a}\right)}{J_0\left(\frac{\omega r_0}{a}\right)}\right)
+     J_0\left(\frac{\omega}{a}r\right)+\cr
+     +r_1J_1\left(\frac{\omega r_1}{a}\right)N_0\left(\frac{\omega}{a}r\right)-
+     \frac{2a}{\pi\omega}\biggr\},\mbox{ $r_1\leq r<r_2$;}\cr
+     \frac{\pi A\alpha}{2a\omega\rho}\left(
+     \frac{N_0\left(\frac{\omega r_0}{a}\right)
+     J_0\left(\frac{\omega}{a}r\right)}{J_0\left(\frac{\omega r_0}{a}\right)}-
+     N_0\left(\frac{\omega r}{a}\right)\right),\mbox{ $r_2\leq r\leq r_0$.}
+     \end{cases}
+\end{gather}
+При этом использовалась известная формула \cite[стр. 983]{GradschteinRyzhik}
+$$
+N_1(x)J_0(x)-J_1(x)N_0(x)=-\frac{2}{\pi x}.
+$$
+Решение (\ref{urte}) перепишем в виде
+\begin{gather*}
+u(r,t)=g(r)\sin\omega t-\omega\sum\limits_{n=1}^\infty
+\frac{M_n\sin\omega_nt}{\omega_n(\omega_n^2-\omega^2)}J_0\left(\frac{\mu_nr}{r_0}\right).
+\end{gather*}
+\end{Solution}
+
+
+
+\begin{Problem} \label{L32}
+Рассмотрим задачу \ref{L31} в случае, когда частота $\omega$ внешней силы совпадает с одной
+из собственных частот колебаний. Для определённости, пусть $\omega=\omega_n=\frac{a\mu_n}{r_0}$.
+\end{Problem}
+\begin{Solution}Решение данной задачи может быть получено из формулы (\ref{urte}).
+Для этого  (\ref{urte}) перепишем, изменив переменную суммирования на $k$ и выделив слагаемое с
+индексом $k=n$:
+\begin{gather}\label{urte1}
+u(r,t)=\frac{M_n}{\omega_n(\omega_n^2-\omega^2)}[\omega_n\sin\omega t-\omega\sin\omega_nt]
+J_0\left(\frac{\mu_nr}{r_0}\right)+\\
+\notag
++\sum\limits_{\substack{k=1\\
+                     k\neq n}}^\infty
+\frac{M_k}{\omega_k(\omega_k^2-\omega^2)}[\omega_k\sin\omega t-\omega\sin\omega_kt]
+J_0\left(\frac{\mu_kr}{r_0}\right).
+\end{gather}
+Решение задачи \ref{L32} находится из (\ref{urte1}) предельным переходом при $\omega\to\omega_n$.
+Вычислим предел первого слагаемого при $\omega\to\omega_n$ по правилу Лопиталя. В результате получим
+\begin{gather*}
+\lim\limits_{\omega\to\omega_n}
+\frac{M_n}{\omega_n(\omega_n^2-\omega^2)}[\omega_n\sin\omega t-\omega\sin\omega_nt]
+J_0\left(\frac{\mu_nr}{r_0}\right)=\\
+=\frac{M_n}{\omega_n}J_0\left(\frac{\mu_nr}{r_0}\right)
+\lim\limits_{\omega\to\omega_n}\frac{t\omega_n\cos\omega t-\sin\omega_nt}{-2\omega}=
+\end{gather*}
+\begin{gather*}
+=\frac{M_n}{2\omega_n}\left(\frac{\sin\omega_nt}{\omega_n}-t\cos\omega_nt\right)
+J_0\left(\frac{\mu_nr}{r_0}\right).
+\end{gather*}
+Второе слагаемое (\ref{urte1}) является функцией, непрерывной при $\omega=\omega_n$, т.к.
+ряд сходится равномерно по $\omega$ при $|\omega-\omega_n|\leq\frac\delta2$, где $\delta=\min\{
+\omega_{n+1}-\omega_n,\omega_n-\omega_{n-1}\}$. Отсюда получаем, что решение задачи
+в случае резонанса имеет вид
+\begin{gather*}
+u(r,t)=\frac{M_n}{2\omega_n}\left(\frac{\sin\omega_nt}{\omega_n}-t\cos\omega_nt\right)
+J_0\left(\frac{\mu_nr}{r_0}\right)+\\
+\notag
++\sum\limits_{\substack{k=1\\
+                     k\neq n}}^\infty
+\frac{M_k}{\omega_k(\omega_k^2-\omega_n^2)}[\omega_k\sin\omega_n t-\omega_n\sin\omega_kt]
+J_0\left(\frac{\mu_kr}{r_0}\right).
+\end{gather*}
+
+\end{Solution}
+
+
+
+
+
+
+
+\begin{Problem}
+В цилиндре с радиусом основания $r_0$ и высотой $h$ происходит тепловыделение с постоянной плотностью
+$Q$. Найти стационарную температуру $u(r,z)$, если на верхнем основании происходит теплообмен с
+окружающей средой нулевой температуры, нижнее основание поддерживается при постоянной температуре $T_0$,
+а боковая поверхность цилиндра не пропускает тепла.
+\end{Problem}
+\begin{Solution}
+Запишем неоднородное  уравнение теплопроводности
+\begin{gather*}%\label{heat:equation:stationary}
+u_t-a^2(u_{xx}+u_{yy}+u_{zz})=\frac Q{c\rho},
+\end{gather*}
+где $c$ --- коэффициент теплоёмкости материала цилиндра, а $\rho$ --- плотность материала цилиндра.
+
+Так как температура в каждой точке цилиндра установилась (не
+меняется с течением времени), то
+\begin{gather*}
+    u_t=0
+\end{gather*}
+и уравнение принимает вид
+\begin{gather}\label{heat:equation:stationary:rp}
+u_{xx}+u_{yy}+u_{zz}=-\frac Q{c\rho a^2}.
+\end{gather}
+
+Пользуясь условиями задачи, запишем граничные условия:
+на верхнем основании
+\begin{gather}\label{heat:boundary:top:rp}
+\left.\left(\frac{\partial u}{\partial n}+Hu\right)\right|_{z=h}=0;
+\end{gather}
+на нижнем основании
+\begin{gather}\label{heat:boundary:bottom:rp}
+u|_{z=0}=T_0;
+\end{gather}
+на боковой поверхности цилиндра
+\begin{gather}\label{heat:boundary:side:rp}
+\left.k\frac{\partial u}{\partial n}\right|_{r=r_0}=0;
+\end{gather}
+где $n$ --- единичный вектор внешней нормали соответственно к верхнему основанию и к боковой поверхности
+цилиндра.
+
+
+После перехода к цилиндрической системе координат получим уравнение
+\begin{gather}\label{heat:cylindric_coords:stationary:rp}
+\frac1r\frac\partial{\partial r}\left(r\frac{\partial u}{\partial r}\right)+
+\frac1{r^2}\frac{\partial^2u}{\partial \varphi^2}+\frac{\partial^2u}{\partial z^2}=-\frac{Q}{c\rho a^2},%\\
+\end{gather}
+и краевые условия
+\begin{gather}
+\notag
+\left.\left(\frac{\partial u}{\partial z}+Hu\right)\right|_{z=h}=0,\,\,\,
+u|_{z=0}=T_0,\,\,\,\left.\frac{\partial u}{\partial r}\right|_{r=r_0}=0.
+\end{gather}
+
+Поскольку задача обладает осевой симметрией, решение не зависит от $\varphi$,
+\begin{gather*}
+u=u(r,z),\,\,\,\frac{\partial u}{\partial \varphi}=0.
+\end{gather*}
+Поэтому уравнение (\ref{heat:cylindric_coords:stationary:rp}) упрощается, и краевая задача принимает вид
+\begin{gather}
+\label{heat:simplified:cylindric_coords:stationary:equation:rp}
+\frac1r\frac\partial{\partial r}
+\left(r\frac{\partial u}{\partial r}\right)+\frac{\partial^2u}{\partial z^2}=-\frac{Q}{c\rho a^2},\,\,\,
+0<r<r_0,\,\,\,0<z<h,\\
+%\end{gather}
+%\begin{gather}
+\label{heat:simplified:cylindric_coords:stationary:top:rp}
+[u_z+Hu]|_{z=h}=0,\,\,\,0\leq r\leq r_0,\\
+\label{heat:simplified:cylindric_coords:stationary:bottom:rp}
+u|_{z=0}=T_0,\,\,\,0\leq r\leq r_0,\\
+\label{heat:simplified:cylindric_coords:stationary:side:rp}
+u_r|_{r=r_0}=0,\,\,\,0\leq z\leq h,\\
+\label{heat:simplified:cylindric_coords:stationary:boundness:rp}
+|u|_{r=0}|<\infty,\,\,\,0\leq z\leq h.
+\end{gather}
+
+Здесь учтено, что точка $r=0$ является особой точкой
+уравнения (\ref{heat:simplified:cylindric_coords:stationary:equation:rp}).
+
+Краевую задачу
+(\ref{heat:simplified:cylindric_coords:stationary:equation:rp})--(\ref{heat:simplified:cylindric_coords:stationary:boundness:rp})
+требуется решить внутри прямоугольника, изображённого на рис. \ref{fig1}.
+В задаче есть пара однородных граничных условий на параллельных сторонах прямоугольника $r=0$ и $r=r_0$.
+Эти граничные условия будем рассматривать как основные.
+
+Найдём систему собственных функций, которую будем использовать при решении
+краевой задачи
+(\ref{heat:simplified:cylindric_coords:stationary:equation:rp})--(\ref{heat:simplified:cylindric_coords:stationary:boundness:rp}).
+С этой целью разделим переменные в соответствующем однородном уравнении
+\begin{gather}\label{auxprobluravnrp}
+\frac1r\frac\partial{\partial r}
+\left(r\frac{\partial v}{\partial r}\right)+\frac{\partial^2v}{\partial z^2}=0,\,\,\,
+0<r<r_0,\,\,\,0<z<h,%\\
+\end{gather}
+и однородных граничных условиях
+\begin{gather}
+\label{auxproblgrrp}
+v_r|_{r=r_0}=0,\,\,\,0\leq z\leq h,\\
+\label{auxproblcenterrp}
+|v|_{r=0}|<\infty,\,\,\,0\leq z\leq h.
+\end{gather}
+Подставляя
+\begin{equation}\label{spsolutionvnrp}
+  v(r,z)=R(r)Z(z)
+\end{equation}
+в уравнение (\ref{auxprobluravnrp}) и в условия (\ref{auxproblgrrp}), (\ref{auxproblcenterrp}), получим
+\begin{gather}
+\label{heat:stationary:Zequation:rp}
+Z''(z)-\lambda Z(z)=0,\\
+\label{heat:stationary:Requation:rp}
+\frac{d}{dr}\left(r\frac{dR(r)}{dr}\right)+\lambda rR(r)=0;\\
+\label{bcRd:stationary:rp}
+|R(0)|<\infty,\,\,\,R'(r_0)=0.
+\end{gather}
+
+
+Собственные числа и собственные функции задачи Штурма--Лиувилля
+(\ref{heat:stationary:Requation:rp}), (\ref{bcRd:stationary:rp}) выписаны на стр.\pageref{SLder:lambda}
+(формулы (\ref{SLder:lambda}), (\ref{SLder:R})).
+
+Будем искать решение $u(r,z)$ краевой задачи
+(\ref{heat:simplified:cylindric_coords:stationary:equation:rp})--(\ref{heat:simplified:cylindric_coords:stationary:boundness:rp})
+в виде
+\begin{gather}\label{urzseries}
+u(r,z)=C_0(z)R_0(r)+\sum\limits_{n=1}^\infty C_n(z)R_n(r).
+\end{gather}
+Подставим данный ряд в уравнение (\ref{heat:simplified:cylindric_coords:stationary:equation:rp}):
+\begin{gather}\label{urzseries:podst}
+C_0''(z)R_0(r)+\sum\limits_{n=1}^\infty\left[
+\frac{C_n(z)}r\frac{d}{dr}(rR_n'(r))+C_n''(z)R_n(r)\right]=-\frac Q{c\rho a^2}.
+\end{gather}
+Используя тождество
+\begin{gather*}
+\frac1r\frac{d}{dr}(rR_n'(r))\equiv-\left(\frac{\mu_n}{r_0}\right)^2R_n(r)
+\end{gather*}
+для собственной функции $R_n(r)$, равенство (\ref{urzseries:podst}) преобразуем к виду
+\begin{gather*}
+C_0''(z)R_0(r)+\sum\limits_{n=1}^\infty\left[C_n''(z)-\left(\frac{\mu_n}{r_0}\right)^2C_n(z)\right]R_n(r)
+=\notag-\frac Q{c\rho a^2}.
+\end{gather*}
+
+Отсюда, применив теорему Стеклова, получим, что
+\begin{gather*}
+C_0''(z)=-\frac Q{c\rho a^2}\frac1{\|R_0\|^2}\int\limits_0^{r_0}rR_0(r)dr,\\
+C_n''(z)-\left(\frac{\mu_n}{r_0}\right)^2C_n(z)=
+-\frac Q{c\rho a^2}\frac1{\|R_n\|^2}\int\limits_0^{r_0}rR_n(r)dr,\,\,\,n=1,2,\dots
+\end{gather*}
+Вычислим интегралы, стоящие в правых частях полученных уравнений. Прежде всего,
+\begin{gather*}
+-\frac Q{c\rho a^2}\frac1{\|R_0\|^2}\int\limits_0^{r_0}rR_0(r)dr=
+-\frac Q{c\rho a^2}\frac2{r_0^2}\int\limits_0^{r_0}rdr=-\frac Q{c\rho a^2}.
+\end{gather*}
+Второй интеграл перепишем в виде
+\begin{gather*}
+\int\limits_0^{r_0}rR_n(r)dr=\int\limits_0^{r_0}rR_n(r)R_0(r)dr,
+\end{gather*}
+что возможно, поскольку $R_0(r)\equiv1$. Воспользовавшись свойством
+ортогональности различных собственных функций, заключаем, что
+\begin{gather*}
+\int\limits_0^{r_0}rR_n(r)dr=0,\,\,\,n=1,2,\dots
+\end{gather*}
+
+
+
+Таким образом, уравнения на функции $C_0(z)$, $C_n(z)$, $n=1,2,\dots$, принимают вид
+\begin{gather*}
+C_0''(z)=-\frac Q{c\rho a^2},\\
+C_n''(z)-\left(\frac{\mu_n}{r_0}\right)^2C_n(z)=0,\,\,\,n=1,2,\dots
+\end{gather*}
+Запишем общие решения этих уравнений:
+\begin{gather}\label{Z0Expr}
+C_0(z)=-\frac Q{2c\rho a^2}z^2+A_0+B_0z,\\
+\label{ZnExpr}
+C_n(z)=A_n\ch\left(\frac{\mu_nz}{r_0}\right)+B_n\sh\left(\frac{\mu_nz}{r_0}\right),\,\,\,n=1,2,\dots
+\end{gather}
+Подставив ряд (\ref{urzseries}) в граничные условия
+(\ref{heat:simplified:cylindric_coords:stationary:top:rp}) и
+(\ref{heat:simplified:cylindric_coords:stationary:bottom:rp}), получим, что
+\begin{gather*}
+C_0(0)R_0(r)+\sum\limits_{n=1}^\infty C_n(0)R_n(r)=T_0,\\
+(C_0'(h)+HC_0(h))R_0(r)+\sum\limits_{n=1}^\infty(C_n'(h)+HC_n(h))R_n(r)=0.
+\end{gather*}
+Отсюда
+\begin{gather}
+\label{Z0bc}
+C_0(0)=T_0,\,\,\,C_0'(h)+HC_0(h)=0;\\
+\label{Znbc}
+C_n(0)=0,\,\,\,C_n'(h)+HC_n(h)=0.
+\end{gather}
+
+Из граничных условий (\ref{Z0bc}) и (\ref{Znbc}) найдём коэффициенты функций (\ref{Z0Expr}) и (\ref{ZnExpr}):
+\begin{gather*}
+A_0=T_0,\,\,\,B_0=\frac{\frac{Qh(2+Hh)}{2c\rho a^2}-HT_0}{1+Hh},\,\,\,A_n=0,\,\,\,B_n=0.
+\end{gather*}
+С учётом этих коэффициентов,
+\begin{gather}\label{Z0Zne}
+C_0(z)=-\frac Q{2c\rho a^2}z^2+\frac{\frac{Qh(2+Hh)}{2c\rho a^2}-HT_0}{1+Hh}z+T_0,\,\,\,C_n(z)=0.
+\end{gather}
+После подстановки (\ref{Z0Zne}) в ряд (\ref{urzseries}), получим решение задачи
+\begin{gather*}
+    u(r,z)=C_0(z)=-\frac Q{2c\rho a^2}z^2+\frac{\frac{Qh(2+Hh)}{2c\rho a^2}-HT_0}{1+Hh}z+T_0.
+\end{gather*}
+
+
+\end{Solution}
+
+\section{Неоднородные граничные условия}
+\begin{Problem}
+Решить задачу о колебаниях круглой мембраны радиуса $r_0$ с центром в начале координат, к краю которой
+приложена внешняя сила, вызывающая смещение края по закону $A\sin\omega t$, $\omega\neq\frac{a\mu_n}{r_0}$,
+$n=1,2,\dots$, где  $0<\mu_1<\mu_2<\dots<\mu_n<\dots$ --- положительные нули функции $J_0(\mu)$.
+Начальное отклонение и начальная скорость мембраны равны нулю.
+\end{Problem}
+
+\begin{Solution}
+Сформулируем начально--краевую задачу. Найти функцию $u(x,y,t)$, определённую в области
+$x^2+y^2\leq r_0^2$, $t\geq0$, удовлетворяющую уравнению
+\begin{equation}\label{volnur2D}
+u_{tt}-a^2(u_{xx}+u_{yy})=0,
+\end{equation}
+в области $x^2+y^2< r_0^2$, $t>0$, начальным условиям
+\begin{gather}\label{nachformamembr:neodnur}
+u|_{t=0}=0,\\
+\label{nacscormembr:neodnur}
+u_t|_{t=0}=0,
+\end{gather}
+и граничному условию
+\begin{equation}\label{gruslmembr:neodnur}
+u|_{x^2+y^2=r_0^2}= A\sin\omega t.
+\end{equation}
+
+Перейдя в задаче к полярным координатам и учтя осевую симметрию задачи, получим начально--краевую задачу
+\begin{gather}\label{volnur2D:polsyst:upr}
+u_{tt}-\frac{a^2}r\frac\partial{\partial r}\left(r\frac{\partial u}{\partial r}\right)=0,\,\,\,
+0<r<r_0,\,\,\,t>0,\\
+\label{volnur2D:polsyst:upr:otkl}
+u|_{t=0}=0,\,\,\,0\leq r\leq r_0,\\
+\label{volnur2D:polsyst:upr:scor}
+u_t|_{t=0}=0,\,\,\,0\leq r\leq r_0,\\
+\label{volnur2D:polsyst:upr:grusl}
+u|_{r=r_0}=A\sin\omega t,\,\,\,t\geq0,\\
+\label{volnur2D:polsyst:upr:grusl_ogr}
+|u|_{r=0}|<\infty,\,\,\,t\geq0.
+\end{gather}
+Здесь добавлено условие (\ref{volnur2D:polsyst:upr:grusl_ogr}), так как точка $r=0$ является особой точкой
+уравнения (\ref{volnur2D:polsyst:upr}).
+
+Сведём задачу (\ref{volnur2D:polsyst:upr})--(\ref{volnur2D:polsyst:upr:grusl_ogr})
+с неоднородным граничным условием (\ref{volnur2D:polsyst:upr:grusl}) к задаче с однородными граничными
+условиями. Для этого представим решение в виде
+\begin{gather*}
+u(r,t)=v(r,t)+w(r,t),
+\end{gather*}
+где функция $v(r,t)$
+удовлетворяет граничным условиям (\ref{volnur2D:polsyst:upr:grusl}), (\ref{volnur2D:polsyst:upr:grusl_ogr}),
+а $w(r,t)$ --- новая неизвестная функция. Так как существует бесчисленное множество функций, удовлетворяющих
+граничным условиям (\ref{volnur2D:polsyst:upr:grusl}), (\ref{volnur2D:polsyst:upr:grusl_ogr}), то можно
+получить различные представления единственного решения задачи
+(\ref{volnur2D:polsyst:upr})--(\ref{volnur2D:polsyst:upr:grusl_ogr}). В данной задаче удобно функцию $v$
+выбрать удовлетворяющей не только граничным условиям
+ (\ref{volnur2D:polsyst:upr:grusl}), (\ref{volnur2D:polsyst:upr:grusl_ogr}),
+но и уравнению (\ref{volnur2D:polsyst:upr}):
+\begin{gather}
+\label{volnur2D:polsyst:upr:v}
+v_{tt}-\frac{a^2}r\frac\partial{\partial r}\left(r\frac{\partial v}{\partial r}\right)=0,\\
+\label{volnur2D:polsyst:upr:grusl:v}
+v|_{r=r_0}=A\sin\omega t,\\
+\label{volnur2D:polsyst:upr:grusl_ogr:v}
+|v|_{r=0}|<\infty.
+\end{gather}
+Среди решений (\ref{volnur2D:polsyst:upr:v})--(\ref{volnur2D:polsyst:upr:grusl_ogr:v})
+выделим функцию специального вида
+\begin{gather}\label{vrtsp}
+v(r,t)=f(r)\sin\omega t.
+\end{gather}
+После подстановки (\ref{vrtsp}) в (\ref{volnur2D:polsyst:upr:v}),  (\ref{volnur2D:polsyst:upr:grusl:v})
+получим краевую задачу для обыкновенного дифференциального уравнения
+\begin{gather}
+\label{volnur2D:polsyst:upr:f}
+\frac{1}{r}\frac{d}{dr}(rf'(r))+\frac{\omega^2}{a^2}f(r)=0,\\
+\label{volnur2D:polsyst:upr:grusl:f}
+f(r_0)=A,\\
+\label{volnur2D:polsyst:upr:grusl_ogr:f}
+|f(0)|<\infty.
+\end{gather}
+Общее решение уравнения (\ref{volnur2D:polsyst:upr:f}) запишем как линейную комбинацию функций Бесселя
+и Неймана
+\begin{gather*}
+f(r)=C_1J_0\left(\frac\omega ar\right)+C_2N_0\left(\frac\omega ar\right).
+\end{gather*}
+Так как функция Неймана неограничена в точке $r=0$, то условие
+ (\ref{volnur2D:polsyst:upr:grusl_ogr:f}) выполняется только в случае  $C_2=0$.
+Подставляя функцию
+\begin{gather*}
+f(r)=C_1J_0\left(\frac\omega ar\right)
+\end{gather*}
+в граничное условие (\ref{volnur2D:polsyst:upr:grusl:f}), найдём, что
+\begin{gather*}
+C_1=\frac{A}{J_0\left(\frac\omega ar_0\right)}.
+\end{gather*}
+Таким образом,
+\begin{gather*}
+f(r)=\frac{AJ_0\left(\frac\omega ar\right)}{J_0\left(\frac\omega ar_0\right)},
+\end{gather*}
+а
+\begin{gather}\label{vrte}
+v(r,t)=\frac{AJ_0\left(\frac\omega ar\right)}{J_0\left(\frac\omega ar_0\right)}\sin\omega t.
+\end{gather}
+
+Сформулируем начально--краевую задачу для функции $w(r,t)$.
+Поскольку функции $u(r,t)$ и $v(r,t)$ удовлетворяют однородному уравнению (\ref{volnur2D:polsyst:upr})
+и одним и тем же граничным условиям
+ (\ref{volnur2D:polsyst:upr:grusl}),  (\ref{volnur2D:polsyst:upr:grusl_ogr}), то
+\begin{gather*}
+w(r,t)\equiv u(r,t)-v(r,t)
+\end{gather*}
+также  удовлетворяет тому же уравнению,
+\begin{gather}\label{volnur2D:polsyst:upr:w}
+w_{tt}-\frac{a^2}r\frac\partial{\partial r}\left(r\frac{\partial w}{\partial r}\right)=0,\,\,\,
+0<r<r_0,\,\,\,t>0,
+\end{gather}
+но однородным граничным условиям
+\begin{gather}\label{volnur2D:polsyst:upr:grusl:w}
+w|_{r=r_0}=0,\\
+\label{volnur2D:polsyst:upr:grusl_ogr:w}
+|w|_{r=0}|<\infty.
+\end{gather}
+Учитывая (\ref{volnur2D:polsyst:upr:otkl}),  (\ref{volnur2D:polsyst:upr:scor}) и явный вид
+(\ref{vrte}) функции $v(r,t)$, заключаем, что
+\begin{gather}
+\label{volnur2D:polsyst:upr:otkl:w}
+w|_{t=0}=u|_{t=0}-v|_{t=0}=0,\\
+\label{volnur2D:polsyst:upr:otkl:scor:w}
+w_t|_{t=0}=u_t|_{t=0}-v_t|_{t=0}=\frac{-A\omega}{J_0\left(\frac\omega ar_0\right)}
+J_0\left(\frac\omega ar\right).
+\end{gather}
+
+
+Таким образом, решение задачи  (\ref{volnur2D:polsyst:upr})--(\ref{volnur2D:polsyst:upr:otkl:scor:w})
+свелось к решению задачи (\ref{volnur2D:polsyst:upr:w})--(\ref{volnur2D:polsyst:upr:grusl_ogr:w})
+с однородными граничными условиями. В результате разделения переменных в уравнении
+(\ref{volnur2D:polsyst:upr:w}) и граничных условиях (\ref{volnur2D:polsyst:upr:grusl:w}),
+(\ref{volnur2D:polsyst:upr:grusl_ogr:w}) найдём семейство решений (см. стр.\pageref{Requationvn}),
+\begin{gather}\label{wnexpr}
+w_n(r,t)=(A_n\cos\omega_nt+B_n\sin\omega_nt)J_0\left(\frac{\mu_n}{r_0}r\right),\,\,\,n=1,2,\dots,
+\end{gather}
+где $\omega_n=\frac{a\mu_n}{r_0}$.
+
+В соответствии с принципом дискретной суперпозиции из решений уравнения (\ref{volnur2D:polsyst:upr:w})
+составим новое решение
+\begin{gather}\label{wexpr}
+w(r,t)=\sum\limits_{n=1}^\infty w_n(r,t)=
+\sum\limits_{n=1}^\infty(A_n\cos\omega_nt+B_n\sin\omega_nt)J_0\left(\frac{\mu_n}{r_0}r\right).
+\end{gather}
+Подставляя (\ref{wexpr}) в начальные условия (\ref{volnur2D:polsyst:upr:otkl:w}),
+(\ref{volnur2D:polsyst:upr:otkl:scor:w}), будем иметь
+\begin{gather*}
+\sum\limits_{n=1}^\infty A_nJ_0\left(\frac{\mu_n}{r_0}r\right)=0,\\
+\sum\limits_{n=1}^\infty B_n\omega_nJ_0\left(\frac{\mu_n}{r_0}r\right)=
+-\frac{A\omega}{J_0\left(\frac\omega ar_0\right)}J_0\left(\frac\omega ar\right).
+\end{gather*}
+Отсюда
+\begin{gather}\label{AnBnEx}
+A_n=0,\\
+\notag
+B_n=-\frac{2A\omega\int\limits_0^{r_0}rJ_0\left(\frac\omega ar\right)J_0
+\left(\frac{\mu_n}{r_0}r\right)dr}{\omega_nJ_0\left(\frac\omega ar_0\right)r_0^2J_1^2(\mu_n)}.
+\end{gather}
+Для вычисления интеграла воспользуемся формулой \cite[(3.12)]{BesselMet}:
+\begin{gather*}
+\int\limits_0^{r_0}rJ_0\left(\frac\omega ar\right)J_0\left(\frac{\mu_n}{r_0}r\right)dr=
+\left.\frac{\frac{\mu_n}{r_0}rJ_0\left(\frac\omega ar\right)
+J_0'\left(\frac{\mu_n}{r_0}r\right)-
+\frac\omega arJ_0'\left(\frac\omega ar\right)J_0\left(\frac{\mu_n}{r_0}r\right)
+}{\frac{\omega^2}{a^2}-\frac{\mu_n^2}{r_0^2}}\right|_0^{r_0}=\\
+=\frac{a\omega_nr_0J_0\left(\frac\omega ar_0\right)J_1(\mu_n)}{\omega^2-\omega_n^2}.
+\end{gather*}
+Таким образом,
+\begin{gather}\label{BnEx}
+B_n=-\frac{2Aa\omega}{r_0(\omega^2-\omega_n^2)J_1(\mu_n)}.
+\end{gather}
+С учётом (\ref{AnBnEx}),  (\ref{BnEx}) запишем ряд  (\ref{wexpr})
+\begin{gather*}
+w(r,t)=-\frac{2Aa\omega}{r_0}\sum\limits_{n=1}^\infty\frac{J_0
+\left(\frac{\mu_n}{r_0}r\right)\sin\omega_nt}{(\omega^2-\omega_n^2)J_1(\mu_n)}
+\end{gather*}
+и решение задачи (\ref{volnur2D:polsyst:upr})--(\ref{volnur2D:polsyst:upr:grusl_ogr})
+\begin{gather*}
+u(r,t)=\frac{AJ_0\left(\frac\omega ar\right)}{J_0\left(\frac\omega ar_0\right)}\sin\omega t
+-\frac{2Aa\omega}{r_0}\sum\limits_{n=1}^\infty\frac{J_0
+\left(\frac{\mu_n}{r_0}r\right)\sin\omega_nt}{(\omega^2-\omega_n^2)J_1(\mu_n)}.
+\end{gather*}
+\end{Solution}
+
+
+
+
+
+\begin{Problem}
+Определите температуру бесконечного круглого цилиндра радиуса $r_0$, если его начальная температура
+равна нулю, а через боковую поверхность подаётся тепловой поток постоянной плотности $q$.
+\end{Problem}
+
+\begin{Solution}
+Учитывая осевую симметрию задачи, сформулируем её в цилиндрической системе координат:
+\begin{gather}
+\label{heat:simplified:cylindric_coords:equation:1}
+u_t-\frac{a^2}r\frac\partial{\partial r}
+\left(r\frac{\partial u}{\partial r}\right)=0,\,\,\,
+0<r<r_0,\,\,\,t>0,\\
+\label{heat:simplified:cylindric_coords:initial:1}
+u|_{t=0}=0,\,\,\,0\leq r \leq r_0,\\
+\label{heat:simplified:cylindric_coords:boundary:1}
+u_r|_{r=r_0}=\frac qk,\,\,\,t\geq0,\\
+\label{heat:simplified:cylindric_coords:boundness:1}
+|u|_{r=0}|<\infty,\,\,\,t\geq0.
+\end{gather}
+
+Чтобы свести задачу
+(\ref{heat:simplified:cylindric_coords:equation:1})--(\ref{heat:simplified:cylindric_coords:boundness:1})
+к задаче с однородными граничными условиями, представим функцию $u(r,t)$ в виде
+\begin{gather}\label{urepres}
+u(r,t)=v(r,t)+w(r,t),
+\end{gather}
+где функция $v(r,t)$ удовлетворяет граничным условиям (\ref{heat:simplified:cylindric_coords:boundary:1}),
+(\ref{heat:simplified:cylindric_coords:boundness:1}), а $w(r,t)$ --- новая неизвестная функция.
+Простейшие функции, удовлетворяющие граничным условиям (\ref{heat:simplified:cylindric_coords:boundary:1}),
+(\ref{heat:simplified:cylindric_coords:boundness:1}), имеют вид
+\begin{gather}
+\label{vsimplest:1}
+v(r,t)=\frac{q}{k}r,\\
+\label{vsimplest:2}
+v(r,t)=\frac{q}{2kr_0}r^2.
+\end{gather}
+Чтобы сформулировать начально--краевую задачу для $w(r,t)$, следует подставить (\ref{urepres}) в уравнение
+(\ref{heat:simplified:cylindric_coords:equation:1}), начальное условие
+(\ref{heat:simplified:cylindric_coords:initial:1}) и граничные условия
+(\ref{heat:simplified:cylindric_coords:boundary:1}), (\ref{heat:simplified:cylindric_coords:boundness:1}).
+Выбор функции $v(r,t)$ в виде (\ref{vsimplest:1}) приведёт к уравнению с особенностью в правой части,
+поэтому отдадим предпочтение функции (\ref{vsimplest:2}).
+
+
+
+Таким образом,
+\begin{gather}\label{urepres:1}
+u(r,t)=\frac{qr^2}{2kr_0}+w(r,t).
+\end{gather}
+
+Подставляя (\ref{urepres:1}) в уравнение (\ref{heat:simplified:cylindric_coords:equation:1}),
+начальное условие (\ref{heat:simplified:cylindric_coords:initial:1})  и граничные условия
+(\ref{heat:simplified:cylindric_coords:boundary:1}),
+(\ref{heat:simplified:cylindric_coords:boundness:1}), будем иметь
+\begin{gather}\label{v:volnur2D:polsyst:upr:1}
+w_{t}-\frac{a^2}r\frac\partial{\partial r}\left(r\frac{\partial w}{\partial r}\right)=
+\frac{2qa^2}{kr_0},\,\,\,0<r<r_0,\,\,\,t>0,\\
+\label{v:volnur2D:polsyst:upr:otkl:1}
+w|_{t=0}=-\frac{q}{2kr_0}r^2,\,\,\,0\leq r\leq r_0,\\
+\label{v:volnur2D:polsyst:upr:grusl:1}
+w_r|_{r=r_0}=0,\,\,\,t\geq0,\\
+\label{v:volnur2D:polsyst:upr:grusl_ogr:1}
+|w|_{r=0}|<\infty,\,\,\,t\geq0.
+\end{gather}
+
+Решение задачи (\ref{v:volnur2D:polsyst:upr:1})--(\ref{v:volnur2D:polsyst:upr:grusl_ogr:1})
+осуществляется по схеме, предложенной в \S\ref{NEODN_UR:ODN_GR_USL}.
+Чтобы найти подходящую для решения начально--краевой задачи
+(\ref{v:volnur2D:polsyst:upr:1})--(\ref{v:volnur2D:polsyst:upr:grusl_ogr:1}) систему собственных
+функций, следует разделить переменные в соответствующем однородном уравнении и граничных условиях
+(\ref{v:volnur2D:polsyst:upr:grusl:1}), (\ref{v:volnur2D:polsyst:upr:grusl_ogr:1}). Такое разделение
+переменных проведено на стр.\pageref{razdel:perem:1}--\pageref{SLder:R}. Соответствующие собственные
+значения и собственные функции определяются формулами (\ref{SLder:lambda}), (\ref{SLder:R}).
+
+Решение $w(r,t)$ начально--краевой задачи
+(\ref{v:volnur2D:polsyst:upr:1})--(\ref{v:volnur2D:polsyst:upr:grusl_ogr:1}) будем искать в виде ряда
+по системе собственных функций (\ref{SLder:R}):
+\begin{gather}\label{v:urtseries:1}
+w(r,t)=C_0(t)R_0(r)+\sum\limits_{n=1}^\infty C_n(t)R_n(r).
+\end{gather}
+
+Подставив этот ряд в уравнение (\ref{v:volnur2D:polsyst:upr:1}), получим
+\begin{gather}\label{v:volnur2D:polsyst:uprvn:sumsum:1}
+C_0'(t)R_0(r)+\sum\limits_{n=1}^\infty C_n'(t)R_n(r)-\\
+-a^2\sum\limits_{n=1}^\infty\frac{C_n(t)}{r}\frac{d}{dr}(rR_n'(r))\notag=\frac{2qa^2}{kr_0}.
+\end{gather}
+
+
+Учитывая тождество
+\begin{gather}\label{z:Rn:eq:1}
+\frac{1}{r}\frac{d}{dr}(rR_n'(r))=-\left(\frac{\mu_n}{r_0}\right)^2R_n(r)
+\end{gather}
+и используя обозначение $\omega_n=\frac{a\mu_n}{r_0}$, будем иметь
+\begin{gather}\label{C0Cn}
+C_0'(t)R_0(r)+\sum\limits_{n=1}^\infty[C_n'(t)+\omega_n^2C_n(t)]R_n(r)=\frac{2qa^2}{kr_0}.
+\end{gather}
+Так как правую часть равенства (\ref{C0Cn}) можно записать в виде $\frac{2qa^2}{kr_0}=
+\frac{2qa^2}{kr_0}R_0(r)$,  то приравнивая в (\ref{C0Cn}) коэффициенты при одинаковых собственных функциях,
+заключаем, что
+\begin{gather*}%
+C_0'(t)=\frac{2qa^2}{kr_0},\,\,\,C_n'(t)+\omega_n^2C_n(t)=0,\,\,\,n=1,2,\dots
+\end{gather*}
+
+Общие решения этих уравнений имеют вид
+\begin{gather}\label{z:Cn:eq:1}
+C_0(t)=\frac{2qa^2}{kr_0}t+A_0,\,\,\,
+C_n(t)=A_ne^{-\omega_n^2t},\,\,\,n=1,2,\dots
+\end{gather}
+
+Подставив ряд (\ref{v:urtseries:1}) в начальное условие (\ref{v:volnur2D:polsyst:upr:otkl:1})
+получим, что
+\begin{gather*}
+C_0(0)R_0(r)+\sum\limits_{n=1}^\infty C_n(0)R_n(r)=-\frac{qr^2}{2kr_0}.
+\end{gather*}
+
+Отсюда, в силу формул \cite[(2.4)]{Fourier1}, следует, что
+\begin{gather}\label{C0Cn0}
+C_0(0)=-\frac2{r_0^2}\frac{q}{2kr_0}\int\limits_0^{r_0}r^2rdr=-\frac{qr_0}{4k};\\
+\notag
+C_n(0)=-\frac2{r_0^2J_0^2(\mu_n)}\frac{q}{2kr_0}\int\limits_0^{r_0}r^3J_0\left(
+\frac{\mu_nr}{r_0}\right)dr,\,\,\,n=1,2,\dots
+\end{gather}
+Интеграл, стоящий в правой части, был вычислен на стр.\pageref{AnInt}. Таким образом,
+\begin{gather}\label{Cn0ex}
+C_n(0)=-\frac{2qr_0}{\mu_n^2kJ_0(\mu_n)},\,\,\,n=1,2,\dots
+\end{gather}
+Из условий (\ref{C0Cn0}),  (\ref{Cn0ex}) находим коэффициенты функций  (\ref{z:Cn:eq:1}):
+\begin{gather*}
+A_0=-\frac{qr_0}{4k},\,\,\,A_n=-\frac{2qr_0}{\mu_n^2kJ_0(\mu_n)},\,\,\,n=1,2,\dots
+\end{gather*}
+Как следствие,
+\begin{gather*}
+C_0(t)=\frac{2qa^2}{kr_0}t-\frac{qr_0}{4k},\,\,\,
+C_n(t)=-\frac{2qr_0}{\mu_n^2kJ_0(\mu_n)}e^{-\omega_n^2t},\,\,\,n=1,2,\dots
+\end{gather*}
+В соответствии с формулами (\ref{urepres:1}),  (\ref{v:urtseries:1}), ответ задачи запишется так:
+\begin{gather*}
+u(r,t)=\frac{2qa^2}{kr_0}t+\frac{q(2r^2-r_0^2)}{4kr_0}%-\\
+-\frac{2qr_0}{k}\sum\limits_{n=1}^\infty
+\frac{e^{-\omega_n^2t}}{\mu_n^2J_0(\mu_n)}J_0\left(\frac{\mu_nr}{r_0}\right).
+\end{gather*}
+
+\end{Solution}
+
+
+\begin{Problem}
+Найти стационарную температуру $u(r,z)$ внутренних точек цилиндра с радиусом основания $r_0$
+и высотой $h$, если верхнее основание теплоизолированно, через нижнее основание подаётся постоянный
+тепловой поток плотности $q$, а боковая поверхность цилиндра обменивается теплом по закону Ньютона
+с внешней средой постоянной температуры $T_0$.
+\end{Problem}
+\begin{Solution} Стационарная температура удовлетворяет уравнению.
+\begin{gather}\label{StT:NHBRP}
+u_{xx}+u_{yy}+u_{zz}=0.
+\end{gather}
+
+Запишем граничные условия на верхнем основании
+\begin{gather}\label{top}
+\left.k\frac{\partial u}{\partial n}\right|_{z=h}=0;
+\end{gather}
+
+на нижнем основании
+\begin{gather}\label{bottom}
+\left.k\frac{\partial u}{\partial n}\right|_{z=0}=q;
+\end{gather}
+
+на боковой поверхности цилиндра
+\begin{gather}\label{side}
+\left.\left[\frac{\partial u}{\partial n}+H[u-T_0]\right]\right|_{r=r_0}=0;
+\end{gather}
+где $n$ --- единичный вектор внешней нормали соответственно к верхнему основанию, к нижнему основанию, и к
+боковой поверхности цилиндра.
+
+
+После перехода к цилиндрической системе координат с учётом осевой симметрии получим краевую задачу
+\begin{gather}
+\label{StT:NHBRP:cylindric_coords:equation}
+\frac1r\frac\partial{\partial r}
+\left(r\frac{\partial u}{\partial r}\right)+\frac{\partial^2u}{\partial z^2}=0,\,\,\,
+0<r<r_0,\,\,\,0<z<h,\\
+%\end{gather}
+%\begin{gather}
+\label{StT:NHBRP:cylindric_coords:top}
+u_z|_{z=h}=0,\,\,\,0\leq r\leq r_0,\\
+\label{StT:NHBRP:cylindric_coords:bottom}
+u_z|_{z=0}=-\frac qk,\,\,\,0\leq r\leq r_0,\\
+\label{StT:NHBRP:cylindric_coords:side}
+[u_r+Hu]|_{r=r_0}=HT_0,\,\,\,0\leq z\leq h,\\
+\label{StT:NHBRP:cylindric_coords:equation:boundness}
+|u|_{r=0}|<\infty,\,\,\,0\leq z\leq h.
+\end{gather}
+Здесь учтено, что нормаль к боковой поверхности цилиндра направлена по радиусу,
+а нормаль к верхнему и нижнему основаниям направлена параллельно оси $z$.
+
+Уравнение (\ref{StT:NHBRP:cylindric_coords:equation}) требуется решить внутри прямоугольника, изображённого
+на рис.\ref{fig1}. Среди граничных условий
+(\ref{StT:NHBRP:cylindric_coords:top})--(\ref{StT:NHBRP:cylindric_coords:equation:boundness})
+нет пары однородных условий на параллельных прямых. Сведём задачу
+(\ref{StT:NHBRP:cylindric_coords:equation})--(\ref{StT:NHBRP:cylindric_coords:equation:boundness})
+к задаче с однородными граничными условиями при $r=r_0$ и $r=0$.
+
+С этой целью решение краевой задачи
+(\ref{StT:NHBRP:cylindric_coords:equation})--(\ref{StT:NHBRP:cylindric_coords:equation:boundness})
+будем искать в виде
+\begin{gather}\label{u:rep}
+u(r,z)=v(r,z)+w(r,z),
+\end{gather}
+где функция $v(r,z)$ удовлетворяет граничным условиям
+(\ref{StT:NHBRP:cylindric_coords:side}), (\ref{StT:NHBRP:cylindric_coords:equation:boundness}).
+В качестве такой функции возьмём $v(r,z)=T_0$.
+После подстановки (\ref{u:rep}) в
+(\ref{StT:NHBRP:cylindric_coords:equation})--(\ref{StT:NHBRP:cylindric_coords:equation:boundness})
+получим краевую задачу на новую неизвестную функцию $w(r,z)$:
+\begin{gather}\label{v:StT:NHBRP:cylindric_coords:equation}
+\frac1r\frac\partial{\partial r}
+\left(r\frac{\partial w}{\partial r}\right)+\frac{\partial^2w}{\partial z^2}=0,\,\,\,
+0<r<r_0,\,\,\,0<z<h,\\
+%\end{gather}
+%\begin{gather}
+\label{v:StT:NHBRP:cylindric_coords:top}
+w_z|_{z=h}=0,\,\,\,0\leq r\leq r_0,\\
+\label{v:StT:NHBRP:cylindric_coords:bottom}
+w_z|_{z=0}=-\frac qk,\,\,\,0\leq r\leq r_0,\\
+\label{v:StT:NHBRP:cylindric_coords:side}
+[w_r+Hw]|_{r=r_0}=0,\,\,\,0\leq z\leq h,\\
+\label{v:StT:NHBRP:cylindric_coords:equation:boundness}
+|w|_{r=0}|<\infty,\,\,\,0\leq z\leq h.
+\end{gather}
+При решении краевой задачи
+(\ref{v:StT:NHBRP:cylindric_coords:equation})--(\ref{v:StT:NHBRP:cylindric_coords:equation:boundness})
+в качестве основных граничных условий возьмём однородные условия на сторонах прямоугольника $r=0$ и $r=r_0$.
+
+Разделение переменных в уравнении (\ref{v:StT:NHBRP:cylindric_coords:equation}) и граничных условиях
+(\ref{v:StT:NHBRP:cylindric_coords:side}), (\ref{v:StT:NHBRP:cylindric_coords:equation:boundness})
+проведено на стр.\pageref{urz:razd:per:1} при решении аналогичной задачи \ref{L23}. Однако в данной
+задаче граничные условия при $z=0$ и $z=h$ имеют другой тип. Поэтому в соответствии с приведёнными на
+стр.\pageref{rec:parall} рекомендациями относительно выбора фундаментальной системы решений, общее
+решение уравнения (\ref{ZnEquation}) запишем в виде
+\begin{gather*}
+Z_n(z)=A_n\ch\frac{\mu_n(z-h)}{r_0}+B_n\ch\frac{\mu_nz}{r_0}
+\end{gather*}
+Используя частные решения уравнения (\ref{v:StT:NHBRP:cylindric_coords:equation}),
+удовлетворяющие граничным условиям (\ref{v:StT:NHBRP:cylindric_coords:side}),
+(\ref{v:StT:NHBRP:cylindric_coords:equation:boundness}),
+\begin{gather*}
+w_n(r,z)=Z_n(z)J_0\left(\frac{\mu_nr}{r_0}\right),
+\end{gather*}
+составим новое решение
+\begin{gather}\label{WE}
+w(r,z)=\sum\limits_{n=1}^\infty\left[A_n\ch\frac{\mu_n(z-h)}{r_0}+B_n\ch\frac{\mu_nz}{r_0}\right]
+J_0\left(\frac{\mu_nr}{r_0}\right).
+\end{gather}
+Коэффициенты $A_n$ и $B_n$ найдём из граничных условий
+(\ref{v:StT:NHBRP:cylindric_coords:top}), (\ref{v:StT:NHBRP:cylindric_coords:bottom}). После подстановки
+ряда (\ref{WE}) в условия (\ref{v:StT:NHBRP:cylindric_coords:top}),
+(\ref{v:StT:NHBRP:cylindric_coords:bottom}) будем иметь
+\begin{gather*}
+\sum\limits_{n=1}^\infty B_n\frac{\mu_n}{r_0}\sh\frac{\mu_nh}{r_0}J_0\left(\frac{\mu_nr}{r_0}\right)=0,\\
+-\sum\limits_{n=1}^\infty A_n\frac{\mu_n}{r_0}\sh\frac{\mu_nh}{r_0}J_0\left(\frac{\mu_nr}{r_0}\right)=
+\frac{q}{k}.
+\end{gather*}
+Отсюда, по теореме Стеклова \cite[(2.4)]{Fourier1}
+\begin{gather*}
+B_n=0,\,\,\,
+A_n\frac{\mu_n}{r_0}\sh\frac{\mu_nh}{r_0}=
+\frac{-\frac{q}{k}\int\limits_0^{r_0}rJ_0\left(\frac{\mu_nr}{r_0}\right)dr}{\int\limits_0^{r_0}
+rJ_0^2\left(\frac{\mu_nr}{r_0}\right)dr}.
+\end{gather*}
+Учитывая нормы собственных функций (формулы (\ref{SchturmLiouvilleR2:solution})) и значение интеграла
+$\int\limits_0^{r_0}rJ_0\left(\frac{\mu_nr}{r_0}\right)dr=\frac{r_0^2}{\mu_n}J_1(\mu_n)$, вычисленное на
+стр.\pageref{r1r2rJ0drINT}, окончательно получим
+\begin{gather*}
+A_n=-\frac{2qr_0J_1(\mu_n)}{k[\mu_n^2+H^2r_0^2]J_0^2(\mu_n)\sh\frac{\mu_nh}{r_0}}.
+\end{gather*}
+Подставив найденные коэффициенты в ряд (\ref{WE}), запишем ответ задачи
+\begin{gather*}
+u(r,z)=T_0-\frac{2qr_0}{k}\sum\limits_{n=1}^\infty
+\frac{J_1(\mu_n)\ch\frac{\mu_n(z-h)}{r_0}}{\left[
+\mu_n^2+H^2r_0^2\right]J_0^2(\mu_n)\sh\frac{\mu_nh}{r_0}}J_0\left(\frac{\mu_nr}{r_0}\right).
+\end{gather*}
+
+\section{Задачи для самостоятельной работы}
+
+\begin{Problem}
+Найти поперечные колебания круглой мембраны радиуса $r_0$, упруго закреплённой по краю, если известно,
+что в начальный момент времени её форма имеет радиальный характер, а начальная скорость равна нулю.
+\end{Problem}
+
+\begin{Problem}
+Определить температуру в бесконечном круглом цилиндре радиуса $r_0$,
+боковая поверхность которого поддерживается при нулевой температуре, а начальная температура внутри
+цилиндра равна $u(r,0)=A\left(1-\frac{r^2}{r_0^2}\right)$.
+\end{Problem}
+
+\begin{Problem}
+Найти стационарную температуру в однородном цилиндре с радиусом основания $r_0$ и высотой $h$,
+если температуры нижнего и верхнего оснований равны соответственно $T_0$ и
+$T_0\left(1-\frac{r}{r_0}\right)$, а боковая поверхность цилиндра теплоизолированна.
+\end{Problem}
+
+\begin{Problem}
+Круглая закреплённая по краю мембрана радиуса $r_0$ находится в среде, оказывающей сопротивление колебаниям,
+пропорциональное смещению. Коэффициент пропорциональности $\alpha<\left(\frac{a\mu_1}{r_0}\right)^2$,
+где $\mu_1$ --- первый положительный корень уравнения $J_0(\mu)=0$. Рассмотреть колебания мембраны,
+вызванные постоянной силой с плотностью $f_0$.
+\end{Problem}
+
+\begin{Problem}
+Определить температуру бесконечного стержня круглого сечения радиуса $r_0$, внутри которого имеются
+равномерно распределённые тепловые источники постоянной мощности $Q$. На боковой поверхности цилиндра
+происходит теплообмен с окружающей средой нулевой температуры. Начальная температура стержня равна нулю.
+\end{Problem}
+
+\begin{Problem}
+Найти стационарную температуру внутри круглого цилиндра радиуса $r_0$ и высоты $h$,
+если в цилиндре происходит тепловыделение с постоянной плотностью $Q$, на боковой поверхности поддерживается
+нулевая температура, а верхнее и нижнее основания не пропускают тепла.
+\end{Problem}
+
+\begin{Problem}
+К краю круглой мембраны радиуса $r_0$ приложена поперечная сила, пропорциональная $\sin\omega t$,
+$\omega\neq\frac{a\mu_n}{r_0}$, где $\mu_n$ --- положительные нули функции $J_1(\mu)$.
+Найти колебания мембраны, если в начальный момент времени отклонения и скорости всех точек мебраны равны
+нулю.
+\end{Problem}
+
+\begin{Problem}
+Определить температуру бесконечного круглого цилиндра радиуса $r_0$, если его начальная температура
+равна нулю, а на боковой поверхности поддерживается постоянная температура $T_0$.
+\end{Problem}
+
+\begin{Problem}
+Найти стационарную температуру $u(r,z)$ внутренних точек цилиндра с радиусом основания $r_0$ и высотой $h$,
+если через боковую поверхность цилиндра подаётся тепловой поток постоянной плотности $q$, на верхнем
+основании поддерживается постоянная температура $T_0$, а нижнее основание теплоизолировано.
+\end{Problem}
+
+\addcontentsline{toc}{section}{Ответы к задачам для самостоятельной работы}
+\section*{Ответы к задачам для самостоятельной работы}
+
+
+\textbf{5.1.} $u(r,t)=\sum\limits_{n=1}^\infty A_n\cos\omega_ntJ_0\left(\frac{\mu_nr}{r_0}\right)$,
+где $A_n=\frac{2\mu_n^2\int\limits_0^{r_0}rf(r)J_0\left(\frac{\mu_nr}{r_0}\right)dr}{r_0^2
+(\mu_n^2+H^2r_0^2)J_0^2(\mu_n)}$, а $\mu_1<\mu_2<\dots<\mu_n<\dots$ ---
+положительные корни уравнения $J_0'(\mu)\mu+Hr_0J_0(\mu)=0$.
+
+\textbf{5.2.} $u(r,t)=8A\sum\limits_{n=1}^\infty
+\frac{e^{-\left(\frac{a\mu_n}{r_0}\right)^2t}}{\mu_n^3J_1(\mu_n)}J_0\left(\frac{\mu_nr}{r_0}\right)$,
+где $\mu_1<\mu_2<\dots<\mu_n<\dots$ --- положительные корни уравнения $J_0(\mu)=0$.
+
+\textbf{5.3.} $u(r,z)=T_0\left(1-\frac{2z}{3h}+2\sum\limits_{n=1}^\infty
+\frac{\sh\frac{\mu_nz}{r_0}}{\mu_nJ_0(\mu_n)\sh\frac{\mu_nh}{r_0}}J_0\left(\frac{\mu_nr}{r_0}\right)\right)$,
+где $\mu_1<\mu_2<\dots<\mu_n<\dots$ --- положительные корни уравнения $J_1(\mu)=0$.
+
+\textbf{5.4.} $u(r,t)=\frac{f_0}{\rho\alpha}
+\left(\frac{J_0\left(\frac{\sqrt\alpha r}{a}\right)}{J_0\left(\frac{\sqrt\alpha r_0}{a}\right)}-1\right)-
+\frac{2f_0}{\rho}\sum\limits_{n=1}^\infty
+\frac{\cos\sqrt{\omega^2-\alpha}t}{\mu_nJ_1(\mu_n)(\omega^2-\alpha)}J_0\left(\frac{\mu_nr}{r_0}\right)$,
+где $\omega_n=\frac{a\mu_n}{r_0}$, а $\mu_1<\mu_2<\dots<\mu_n<\dots$ --- положительные корни уравнения
+$J_0(\mu)=0$.
+
+\textbf{5.5.} $u(r,t)=\frac{Q}{4c\rho a^2}(2r_0+Hr_0^2-r^2)+\frac{2Q}{c\rho}
+\sum\limits_{n=1}^\infty
+\frac{\mu_nJ_1(\mu_n)
+e^{-\left(\frac{a\mu_n}{r_0}\right)t}}{J_0^2(\mu_n)(\mu_n^2+H^2r_0^2)}J_0\left(\frac{\mu_nr}{r_0}\right)$,
+где $\mu_1<\mu_2<\dots<\mu_n<\dots$ --- положительные корни уравнения $J_0'(\mu)\mu+Hr_0J_0(\mu)=0$.
+
+\textbf{5.6.} $u(r,t)=\frac{Q}{4c\rho a^2}(r_0^2-r^2)$.
+
+\textbf{5.7.} $u(r,t)=\frac{2Aa^2}{r_0k\omega}t-\frac{AaJ_0\left(\frac{\omega r}{a}\right)\sin\omega t}{k
+\omega J_1\left(\frac{\omega r_0}{a}\right)}+\frac{2A\omega}{r_0k}
+\sum\limits_{n=1}^\infty
+\frac{\sin\omega_nt}{\omega_nJ_0(\mu_n)}J_0\left(\frac{\mu_nr}{r_0}\right)$,
+где $\omega_n=\frac{a\mu_n}{r_0}$, а $\mu_1<\mu_2<\dots<\mu_n<\dots$ --- положительные нули функции
+$J_1(\mu)$.
+
+\textbf{5.8.} $u(r,t)=T_0-2T_0\sum\limits_{n=1}^\infty
+\frac{e^{-\left(\frac{a\mu_n}{r_0}\right)^2t}}{\mu_nJ_1(\mu_n)}J_0\left(\frac{\mu_nr}{r_0}\right)$.
+
+\textbf{5.9.} $u(r,t)=\frac{q}{r_0k}(h^2-z^2)+\frac{q}{4r_0k}(2r^2-r_0^2)-
+\frac{2r_0q}{k}\sum\limits_{n=1}^\infty
+\frac{\ch\frac{\mu_nz}{r_0}J_0\left(\frac{\mu_nr}{r_0}\right)}{\mu_n^2\ch\frac{\mu_nh}{r_0}J_0(\mu_n)}$,
+где $\mu_1<\mu_2<\dots<\mu_n<\dots$ --- положительные корни уравнения $J_1(\mu)=0$.
+\begin{comment}
+(формулы (\ref{heat:stationary:special_solution})--(\ref{bcRd:stationary})).
+Собственные числа и собственные функции получающейся задачи Штурма--Лиувилля
+выписаны на с.\pageref{SchturmLiouvilleR2:solution} (формулы (\ref{SchturmLiouvilleR2:solution})).
+
+Будем искать решение $w(r,z)$ краевой задачи
+(\ref{v:StT:NHBRP:cylindric_coords:equation})--(\ref{v:StT:NHBRP:cylindric_coords:equation:boundness})
+в виде
+\begin{gather}\label{vrzseries}
+w(r,z)=\sum\limits_{n=1}^\infty C_n(z)R_n(r).
+\end{gather}
+Подставляя данный ряд в уравнение (\ref{v:StT:NHBRP:cylindric_coords:equation}) и
+используя уравнение для собственных функций, получим, что
+\begin{gather}\label{ZR:sum:1}
+\sum\limits_{n=1}^\infty\left[C_n''(z)-\left(\frac{\mu_n}{r_0}\right)^2C_n(z)\right]R_n(r)=
+-\frac{Q}{c\rho a^2}.
+\end{gather}
+Отсюда
+\begin{gather*}
+C_n''(z)-\left(\frac{\mu_n}{r_0}\right)^2C_n(z)=-\frac{Q}{c\rho a^2\|R_n\|^2}\int\limits_0^{r_0}rR_n(r)dr,\,\,
+n=1,2,\dots
+\end{gather*}
+Учитывая нормы собственных функций (формулы (\ref{SchturmLiouvilleR2:solution})) и значение интеграла $\int\limits_0^{r_0}rJ_0\left(\frac{\mu_nr}{r_0}\right)dr=
+\frac{r^2_0}{\mu_n}J_1(\mu_n)$, вычисленное на стр.\pageref{intrJ0mu_nrr0dr}, перепишем уравнение в виде
+\begin{gather*}
+C_n''(z)-\left(\frac{\mu_n}{r_0}\right)^2C_n(z)=
+-\frac{2QJ_1(\mu_n)}{c\rho a^2\mu_n\left[1+\frac{H^2r_0^2}{\mu_n^2}\right]J_0^2(\mu_n)},\\
+n=1,2,\dots
+\end{gather*}
+Запишем общее решение данного уравнения:
+\begin{gather}\label{CnExpr}
+C_n(z)=A_n\sh\left(\frac{\mu_n(z-h)}{r_0}\right)+B_n\ch\left(\frac{\mu_nz}{r_0}\right)+\\
+%\end{gather}
+%\begin{gather*}
+\notag
++\frac{2Qr_0^2J_1(\mu_n)}{c\rho a^2\mu_n^3\left[1+\frac{H^2r_0^2}{\mu_n^2}\right]J_0^2(\mu_n)},\,\,\,
+n=1,2,\dots
+\end{gather}
+Подставив ряд (\ref{vrzseries}) в граничные условия
+(\ref{v:StT:NHBRP:cylindric_coords:top}) и (\ref{v:StT:NHBRP:cylindric_coords:bottom}), заключаем, что
+\begin{gather*}
+\sum\limits_{n=1}^\infty C_n(h)R_n(r)=u_0(r)-T_0,\,\,\,
+\sum\limits_{n=1}^\infty C_n'(0)R_n(r)=-\frac qk.
+\end{gather*}
+Применив теорему Стеклова, выводим, что
+\begin{gather}\label{CnBC}
+C_n(h)=\frac{2}{r_0^2\left[1+\frac{H^2r_0^2}{\mu_n^2}\right]J_0^2(\mu_n)}
+\int\limits_0^{r_0}r[u_0(r)-T_0]J_0\left(\frac{\mu_nr}{r_0}\right)dr\equiv\alpha_n,\\
+\notag
+C_n'(0)=\frac{-2qr_0^2J_1(\mu_n)}{k\mu_n\left[1+\frac{H^2r_0^2}{\mu_n^2}\right]J_0^2(\mu_n)}.
+\end{gather}
+Подставив функцию (\ref{CnExpr}) в граничные условия  (\ref{CnBC}), получим, что
+\begin{gather*}
+A_n=-\frac{2qr_0^3J_1(\mu_n)}{k\mu_n^2\ch\left(\frac{\mu_nh}{r_0}\right)
+\left[1+\frac{H^2r_0^2}{\mu_n^2}\right]J_0^2(\mu_n)};\\
+B_n=\frac1{\ch\left(\frac{\mu_nh}{r_0}\right)}\biggl[\alpha_n-
+\frac{2Qr_0^2J_1(\mu_n)}{c\rho a^2\mu_n^3\left[1+\frac{H^2r_0^2}{\mu_n^2}\right]J_0^2(\mu_n)}\biggr].
+\end{gather*}
+Запишем теперь ответ задачи:
+\begin{gather*}
+u(r,z)=
+\sum\limits_{n=1}^\infty\biggl[
+\frac1{\ch\left(\frac{\mu_nh}{r_0}\right)}\biggl[\alpha_n-
+\frac{2Qr_0^2J_1(\mu_n)}{c\rho a^2\mu_n^3\left[1+\frac{H^2r_0^2}{\mu_n^2}\right]J_0^2(\mu_n)}\biggr]
+\ch\left(\frac{\mu_nz}{r_0}\right)-\\
+-\frac{2qr_0^3J_1(\mu_n)}{k\mu_n^2\ch\left(\frac{\mu_nh}{r_0}\right)
+\left[1+\frac{H^2r_0^2}{\mu_n^2}\right]J_0^2(\mu_n)}\sh\left(\frac{\mu_n(z-h)}{r_0}\right)+\\
++\frac{2Qr_0^2J_1(\mu_n)}{c\rho a^2\mu_n^3\left[1+\frac{H^2r_0^2}{\mu_n^2}\right]J_0^2(\mu_n)}\biggr]
+J_0\left(\frac{\mu_nr}{r_0}\right)+T_0.
+\end{gather*}
+
+\end{comment}
+
+\end{Solution}
+
+\addcontentsline{toc}{section}{Список литературы}
+\begin{thebibliography}{9}
+
+\bibitem{Fourier1} Денисова Н.А. Метод разделения переменных в задачах математической физики:
+Учебно--методическое пособие. --- Н.Новгород: Изд--во ННГУ, 2008. --- 47с.
+
+\bibitem{BesselMet} Гаврилов В.С., Денисова Н.А., Калинин А.В. Цилиндрические функции:
+Учебно--методическое пособие. --- Н.Новгород: Изд--во ННГУ, 2008. --- 42с.
+
+\bibitem{arsenin} Арсенин В.Я. Методы математической физики и специальные функции:  Учебное пособие для
+студентов высших технических учебных заведений. М.: Наука, 1984. --- 383с.
+
+\bibitem{TihonovSamarskij} Тихонов А.Н., Самарский А.А. Уравнения математической физики:
+Учебник для физико--математических специальностей. М.: изд--во Моск. ун--та; Наука, 2004. --- 798с.
+
+\bibitem{BudakSamarskijTihonov} Будак Б.М., Самарский А.А., Тихонов А.Н. Сборник задач по математической
+физике: Учебное пособие для студентов университетов. М.: Наука, 1972. --- 687с.
+
+\bibitem{Vladimirov} Сборник задач по уравнениям математической физики. Под редакцией Владимирова В.С.
+М.: Наука, 1982. --- 254с.
+
+\bibitem{LebedevSkalskayaUflyand} Лебедев Н.Н., Скальская И.П.,  Уфлянд Я.С.
+Сборник задач по математической физике. М.: ГИТТЛ, 1955. --- 420с.
+
+\bibitem{GradschteinRyzhik} Градштейн И.С., Рыжик И.М. Таблицы интегралов, сумм, рядов и произведений. М.:
+гос. изд--во физико--математической литературы, 1963. ---  1097с.
+
+\end{thebibliography}
+
+\end{document}
